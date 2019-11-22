@@ -18,14 +18,12 @@
         <div class="col-6 welcome">
             <div class="row">
                 <div class="col-12">
-                    <h1>Create an Account!</h1>
+                    <h1>Welcome Back!</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="php/createaccount.php">
-                        <label><input placeholder="Nome" type="text" name="name" required></label><br>
-                        <br>
+                    <form method="post" action="php/startsession.php">
                         <label><input placeholder="Username" type="text" name="username" required></label><br>
                         <br>
                         <label><input placeholder="Email" type="text" name="email" required></label><br>
