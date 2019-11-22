@@ -8,12 +8,12 @@
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body class="grid">
-    <header>
-        <?php include('header.php'); ?>
-    </header>
+<header>
+    <?php include('header.php'); ?>
+</header>
 
-    <div class="row">
-        <div class="col-12"></div>
-    </div>
+<div class="row">
+    <div class="col-12"></div>
+</div>
 </body>
 </html>
