@@ -30,7 +30,8 @@
                         <br>
                         <label><input placeholder="Password" type="text" name="password" required></label><br>
                         <br>
-                        <label><input placeholder="Confirm Password" type="text" name="confirmpassword" required></label><br>
+                        <label><input placeholder="Confirm Password" type="text" name="confirmpassword"
+                                      required></label><br>
                         <br>
                         <input type="submit" class="button" value="Registar">
                     </form>
@@ -42,3 +43,42 @@
 </div>
 </body>
 </html>
+
+<?php
+if (empty($_POST)) {
+    return;
+}
+
+$str = "dbname=postgres user=postgres password=postgres host=localhost port=5432";
+$connection = pg_connect($str);
+
+if (!$connection) {
+    die("Erro na ligacao");
+}
+
+$username =$_POST['username'];
+$password=$_POST['password'];
+$email=$_POST['username'];
+
+
+
+$login = pg_query($connection, "select username,password,email from utilizador WHERE username='$username' AND password='$password' AND email=$email;");
+print pg_affected_rows($login);
+
+echo "<br />";
+
+if ($login && pg_num_rows($login) == 1) {
+
+    $_SESSIONS['username'] = pg_result_status( $login);
+
+    echo "sucesso";
+
+} else {
+
+    echo "bolas o que correu mal";
+
+}
+
+?>
+
+
