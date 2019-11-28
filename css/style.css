@@ -34,7 +34,7 @@ main {
 }
 
 .row.empty {
-    height: 20px;
+    height: 40px;
 }
 
 [class*='col-'] {
@@ -147,6 +147,7 @@ nav .icon [class*='col-']:first-child {
     transform: translateX(50%) translateY(50%);
     padding: 30px;
     border-radius: 10px;
+    height: 300px;
 }
 
 .button {
