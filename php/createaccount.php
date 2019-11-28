@@ -1,26 +1,22 @@
 <?php
-$str = "dbname=postgres user=postgres password=postgres host=localhost port=5432";
-$connection = pg_connect($str);
-
-if (!$connection) {
-    die("Erro na ligacao");
-}
-echo "Ligacao estabelecida!";
-
 $nome = $_POST['name'];
 $username = $_POST['username'];
 $password = $_POST['confirmpassword'];
 $email = $_POST['email'];
 
-$dadosexistentes = pg_query($connection, "SELECT username FROM utilizador");
+foreach ($dadosexistentes as $value) {
+    if($value['username'] == $nome || $value['email'] = $email){
 
-$resultados = pg_query($connection,
-    "INSERT INTO utilizador (nome, username, password, email) VALUES ('$nome', '$username', '$password', '$email');")
-    or die;
+        header('Location: ../signup.php');
+        break;
 
-include('sendconfirmationmail.php');
+    } else {
+        pg_query($connection, "INSERT INTO utilizador (nome, username, password, email) VALUES ('$nome', '$username', '$password', '$email');")
+        or die;
 
-pg_close($connection);
+        include('sendconfirmationmail.php');
 
-header('Location: ../profile.php');
+        header('Location: ../profile.php');
+    }
+}
 ?>
