@@ -32,6 +32,6 @@ if (pg_num_rows($login) == 1) {
 
 }
 
-header('Location: ../profile.php');
+header('Location: ../homepage.php');
 
 ?>

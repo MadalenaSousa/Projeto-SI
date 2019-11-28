@@ -160,5 +160,12 @@ nav .icon [class*='col-']:first-child {
     margin-top: 20px;
 }
 
+.new {
+    background-color: white;
+
+}
+.aparece{
+    color: black;
+}
 
 
