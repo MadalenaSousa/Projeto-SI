@@ -13,25 +13,25 @@ if (!$connection) {
 $username =$_POST['username'];
 $password=$_POST['password'];
 
-
-
 $login = pg_query($connection, "SELECT username,password FROM utilizador WHERE username='$username' AND password='$password'");
-print pg_affected_rows($login);
 
-echo "<br />";
+echo "<br/>";
 
-if ($login && pg_num_rows($login) == 1) {
+if (pg_num_rows($login) == 1) {
 
-    $_SESSIONS['username'] = pg_result_status($login);
+    session_start();
 
-    echo "sucesso";
+    $_SESSIONS['username'] = $username;
+    $_SESSIONS['password'] = $password;
+
+    echo "Sucesso!";
 
 } else {
 
-    echo "bolas o que correu mal";
+    echo "Não há nenhum utilizador registado com esses dados!";
 
 }
 
-//header('Location: ../profile.php');
+header('Location: ../profile.php');
 
 ?>
