@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="php/createaccount.php">
+                    <form method="post" action="actions/createaccount.php">
                         <label><input placeholder="Nome" type="text" name="name" required></label><br>
                         <br>
                         <label><input placeholder="Username" type="text" name="username" required></label><br>
