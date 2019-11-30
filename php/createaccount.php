@@ -12,10 +12,10 @@ $username = $_POST['username'];
 $password = $_POST['confirmpassword'];
 $email = $_POST['email'];
 
-$dadosexistentes = pg_query($connection, "SELECT username FROM utilizador");
+$dadosexistentes = pg_query($connection, "SELECT username FROM utilizador"); // ????
 
 $resultados = pg_query($connection,
-    "INSERT INTO utilizador (nome, username, password, email) VALUES ('$nome', '$username', '$password', '$email');")
+    "INSERT INTO utilizador (nome, username, password, email) VALUES ('$nome', '$username', '$password', '$email');"/*---*/)
     or die;
 
 include('sendconfirmationmail.php');
