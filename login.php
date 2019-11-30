@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="php/startsession.php">
+                    <form method="post" action="actions/startsession.php">
                         <label><input placeholder="Username" type="text" name="username" required></label><br>
                         <label><input placeholder="Password" type="text" name="password" required></label><br>
                         <input type="submit" class="button" value="Login">
