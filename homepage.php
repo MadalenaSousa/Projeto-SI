@@ -12,8 +12,27 @@
     <?php include('header.php'); ?>
 </header>
 
-<div class="row">
-    <div class="col-12"></div>
-</div>
+
+<main>
+    <div class="row">
+        <div class="col-12">
+            <h1 class="aparece"> aparece</h1>
+            <div class="new">
+            <div class="rest">
+                <img src="#">
+                <h3>cenas</h3>
+            </div>
+            <div class="rest">
+                <img src="#">
+            </div>
+            <div class="rest">
+                <img src="#">
+            </div>
+            <div class="rest">
+                <img src="#">
+            </div>
+        </div>
+    </div
+</main>
 </body>
 </html>
