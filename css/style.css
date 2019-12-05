@@ -10,14 +10,16 @@ body, html {
 /*Geral*/
 
 main {
+
     height: 100%;
     width: 100%;
+    color: black;
     font-family: "HelveticaNeueLT Std", sans-serif;
 }
 
 .grid {
     width: 100%;
-    min-width:600px;
+    min-width: 600px;
     margin: 0 auto;
     box-sizing: border-box;
     font-family: "HelveticaNeueLT Std", sans-serif;
@@ -62,35 +64,47 @@ a {
 .col-2 {
     width: calc(calc(100% / 12) * 2);
 }
+
 .col-3 {
     width: calc(calc(100% / 12) * 3);
 }
+
 .col-4 {
     width: calc(calc(100% / 12) * 4);
 }
+
 .col-5 {
     width: calc(calc(100% / 12) * 5);
 }
+
 .col-6 {
     width: calc(calc(100% / 12) * 6);
 }
+
 .col-7 {
     width: calc(calc(100% / 12) * 7);
 }
+
 .col-8 {
     width: calc(calc(100% / 12) * 8);
 }
+
 .col-9 {
     width: calc(calc(100% / 12) * 9);
 }
+
 .col-10 {
     width: calc(calc(100% / 12) * 10);
 }
+
 .col-11 {
     width: calc(calc(100% / 12) * 11);
 }
+
 .col-12 {
+
     width: calc(calc(100% / 12) * 12);
+
 }
 
 /*Navegação*/
@@ -160,12 +174,25 @@ nav .icon [class*='col-']:first-child {
     margin-top: 20px;
 }
 
-.new {
-    background-color: white;
+/*homepage*/
+.col-12 {
+    margin-top: 300px;
+    display: inline-block;
+    margin-left: 5%;
+
 
 }
-.aparece{
-    color: black;
+
+.rest {
+    margin-top: 50px;
+    float: left;
+    width: calc(75% / 4);
+    position: relative;
+    background-color: white;
+    margin-right: 5%;
+    height: 200px;
+
+
 }
 
 
