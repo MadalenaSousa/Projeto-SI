@@ -11,7 +11,7 @@ $dadosexistentes = pg_query($connection, "SELECT username FROM utilizador");
 $dadosexistentes = pg_fetch_all($dadosexistentes);
 
 foreach ($dadosexistentes as $value) {
-    if($value['username'] == $nome || $value['email'] = $email){
+    if($value['username'] == $username || $value['email'] = $email){
 
         header('Location: ../signup.php');
         break;
@@ -22,7 +22,7 @@ foreach ($dadosexistentes as $value) {
 
         mailOutputForm($email);
 
-        header('Location: ../profile.phhp');
+        header('Location: ../profile.php');
     }
 }
 
