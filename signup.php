@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,14 +35,6 @@
                         <br>
                         <label><input placeholder="Email" type="text" name="email" required></label><br>
                         <br>
-
-                         <!--quando houver definir se é utilizador normal ou superuser-->
-                        <?php if( isset($_SESSION['role']) && $_SESSION['role'] == 'root') { ?>
-                        <label><input placeholder="Type" type="text" name="type" required></label><br>
-                        <br>
-                        <?php } ?>
-
-
                         <label><input placeholder="Password" type="text" name="password" required></label><br>
                         <br>
                         <label><input placeholder="Confirm Password" type="text" name="confirmpassword" required></label><br>
