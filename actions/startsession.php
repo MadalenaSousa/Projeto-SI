@@ -11,7 +11,7 @@ $password = $_POST['password'];
 //$role=$_POST['role'];
 // deves trazer tudo que precisas para a sessao mas nunca a password
 
-$login = pg_query($connection, "SELECT username,role FROM utilizador WHERE username=$1 AND password=$2", $username, $password);
+$login = pg_query($connection, "SELECT username FROM utilizador WHERE username=$1 AND password=$2", $username, $password);
 
 echo "<br/>";
 
@@ -34,26 +34,5 @@ if (pg_num_rows($login) == 1) {
 include("close_connection.php");
 
 header('Location: ../homepage.php');
-
-include("open_connection.php");
-
-
-
-
-$aumentou = pg_query($connection, " select*
-    from restaurante");
-
-
-if (pg_num_rows($aumentou)-1>=0) {
-    $_POST();
-    echo "detetei";
-}else{
-    echo"erro";
-
-}
-
-
-
-
 
 ?>
