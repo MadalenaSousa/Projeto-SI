@@ -12,10 +12,10 @@
 
     <div class="icon col-2">
         <div class="col-3">
-            Nome
+            <?php echo $_SESSION['nome'] ?>
         </div>
         <div class="col-3">
-            <img src="images/profile-pic.svg" alt="">
+            <img src=" . <?php echo $_SESSION['foto'] ?> . "alt="">
         </div>
         <div class="col-3">
             <img src="images/notification.svg" alt="">
