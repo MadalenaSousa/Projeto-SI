@@ -11,9 +11,7 @@ for ($i = 0; $i < count($resultados); $i++) {
 
         $ultimosrestaurantes = array($resultados['id']);
 
-
     }
-
 }
 
 ?>
