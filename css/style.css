@@ -1,52 +1,30 @@
+:root{
+    --amarelo: #FFE485;
+    --menta: #77CAB6;
+}
+
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #FFE485;
+    background-color: var(--amarelo);
     font-family: "HelveticaNeueLT Std", sans-serif;
-    opacity: 1.0;
 }
 
 /*Geral*/
 
-main {
-
-    height: 100%;
-    width: 100%;
-    color: black;
-    font-family: "HelveticaNeueLT Std", sans-serif;
-}
-
 .grid {
-    width: 100%;
-    min-width: 600px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    font-family: "HelveticaNeueLT Std", sans-serif;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 10px;
+
+    position: relative;
+
+    margin-bottom: 20px;
 }
 
 .grid * {
     box-sizing: border-box;
-}
-
-
-.row {
-    content: ' ';
-    clear: both;
-}
-
-.row.empty {
-    height: 40px;
-}
-
-[class*='col-'] {
-    float: left;
-    width: calc(100% / 12);
-}
-
-[class*='col-'].empty {
-    float: left;
-    width: calc(100% / 12);
 }
 
 ul {
@@ -56,55 +34,6 @@ ul {
 a {
     color: inherit;
     text-decoration: none;
-}
-
-
-/* Largura das Células*/
-
-.col-2 {
-    width: calc(calc(100% / 12) * 2);
-}
-
-.col-3 {
-    width: calc(calc(100% / 12) * 3);
-}
-
-.col-4 {
-    width: calc(calc(100% / 12) * 4);
-}
-
-.col-5 {
-    width: calc(calc(100% / 12) * 5);
-}
-
-.col-6 {
-    width: calc(calc(100% / 12) * 6);
-}
-
-.col-7 {
-    width: calc(calc(100% / 12) * 7);
-}
-
-.col-8 {
-    width: calc(calc(100% / 12) * 8);
-}
-
-.col-9 {
-    width: calc(calc(100% / 12) * 9);
-}
-
-.col-10 {
-    width: calc(calc(100% / 12) * 10);
-}
-
-.col-11 {
-    width: calc(calc(100% / 12) * 11);
-}
-
-.col-12 {
-
-    width: calc(calc(100% / 12) * 12);
-
 }
 
 /*Navegação*/
@@ -118,7 +47,6 @@ nav {
 }
 
 nav [class*='col-'] {
-    position: relative;
     text-align: center;
 }
 
@@ -156,16 +84,22 @@ nav .icon [class*='col-']:first-child {
 
 /*Landing Page*/
 
-.welcome {
+.grid-welcome {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 20px;
+
+    position: relative;
+
+    margin-bottom: 20px;
     background-color: white;
-    transform: translateX(50%) translateY(50%);
     padding: 30px;
     border-radius: 10px;
-    height: 300px;
+    height: 100%;
 }
 
 .button {
-    background-color: #77CAB6;
+    background-color: var(--menta);
     color: white;
     border-radius: 40px;
     font-weight: bold;
@@ -174,25 +108,12 @@ nav .icon [class*='col-']:first-child {
     margin-top: 20px;
 }
 
-/*homepage*/
-.col-12 {
-    margin-top: 300px;
-    display: inline-block;
-    margin-left: 5%;
-
-
-}
+/*Homepage*/
 
 .rest {
-    margin-top: 50px;
-    float: left;
-    width: calc(75% / 4);
-    position: relative;
-    background-color: white;
-    margin-right: 5%;
     height: 200px;
-
-
+    background-color: white;
+    border-radius: 40px;
 }
 
 

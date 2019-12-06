@@ -7,34 +7,29 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
-<body class="grid">
+<body>
+
 <header>
-    <?php include('header.php'); ?>
+    <?php include 'header.php' ?>
 </header>
 
-
-<main>
-    <div class="row">
-        <div class="col-12">
-
-            <div class="rest">
-                <img src="#">
-                <h3>descriçao</h3>
-            </div>
-            <div class="rest">
-                <img src="#">
-                <h3>descriçao</h3>
-            </div>
-            <div class="rest">
-                <img src="#">
-                <h3>descriçao</h3>
-            </div>
-            <div class="rest">
-                <img src="#">
-                <h3>descriçao</h3>
-            </div>
-
-        </div
+<main class="grid">
+    <div class="rest">
+        <img src="#" alt="">
+        <h3>descriçao</h3>
+    </div>
+    <div class="rest">
+        <img src="#" alt="">
+        <h3>descriçao</h3>
+    </div>
+    <div class="rest">
+        <img src="#" alt="">
+        <h3>descriçao</h3>
+    </div>
+    <div class="rest">
+        <img src="#" alt="">
+        <h3>descriçao</h3>
+    </div>
 </main>
 </body>
 </html>

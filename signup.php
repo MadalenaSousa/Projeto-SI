@@ -9,43 +9,36 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
-<body class="grid">
+<body>
 <div class="fundo" style="background-image: url('images/fundo.jpg');">
     <header>
-        <?php
-        include('header.php');
-        session_start();
-        ?>
+        <?php include('header.php'); ?>
     </header>
 
-    <div class="row">
-        <div class="col-3 empty"></div>
-        <div class="col-6 welcome">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Create an Account!</h1>
-                </div>
+    <main class="grid">
+        <div></div>
+        <div class="grid-welcome">
+            <div>
+                <h1>Create an Account!</h1>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <form method="post" action="actions/createaccount.php">
-                        <label><input placeholder="Nome" type="text" name="name" required></label><br>
-                        <br>
-                        <label><input placeholder="Username" type="text" name="username" required></label><br>
-                        <br>
-                        <label><input placeholder="Email" type="text" name="email" required></label><br>
-                        <br>
-                        <label><input placeholder="Password" type="text" name="password" required></label><br>
-                        <br>
-                        <label><input placeholder="Confirm Password" type="text" name="confirmpassword" required></label><br>
-                        <br>
-                        <input type="submit" class="button" value="Registar">
-                    </form>
-                </div>
+            <div>
+                <form method="post" action="actions/createaccount.php">
+                    <label><input placeholder="Nome" type="text" name="name" required></label><br>
+                    <br>
+                    <label><input placeholder="Username" type="text" name="username" required></label><br>
+                    <br>
+                    <label><input placeholder="Email" type="text" name="email" required></label><br>
+                    <br>
+                    <label><input placeholder="Password" type="text" name="password" required></label><br>
+                    <br>
+                    <label><input placeholder="Confirm Password" type="text" name="confirmpassword" required></label><br>
+                    <br>
+                    <input type="submit" class="button" value="Registar">
+                </form>
             </div>
         </div>
-        <div class="col-3 empty"></div>
-    </div>
+        <div></div>
+    </main>
 </div>
 </body>
 </html>
