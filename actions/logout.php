@@ -1,7 +1,8 @@
 <?php
 
 if(isset($_SESSION['username'])) {
- session_destroy();
+    unset($_SESSION);
+    session_destroy();
 }
 
 header('Location: ../index.php');
