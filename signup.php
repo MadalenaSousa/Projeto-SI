@@ -19,10 +19,26 @@
         <div></div>
         <div class="grid-welcome">
             <div>
-                <h1>Create an Account!</h1>
+                <h1>Create an Account as a Client!</h1>
+                <form method="post" action="actions/create-client.php">
+                    <label><input placeholder="Nome" type="text" name="name" required></label><br>
+                    <br>
+                    <label><input placeholder="Username" type="text" name="username" required></label><br>
+                    <br>
+                    <label><input placeholder="Email" type="text" name="email" required></label><br>
+                    <br>
+                    <label><input placeholder="Password" type="text" name="password" required></label><br>
+                    <br>
+                    <label><input placeholder="Confirm Password" type="text" name="confirmpassword" required></label><br>
+                    <br>
+                    <label><input placeholder="Saldo" type="text" name="saldo" required></label><br>
+                    <br>
+                    <input type="submit" class="button" value="Registar">
+                </form>
             </div>
             <div>
-                <form method="post" action="actions/createaccount.php">
+                <h1>Create an Account as a Restaurant!</h1>
+                <form method="post" action="actions/create-restaurant.php">
                     <label><input placeholder="Nome" type="text" name="name" required></label><br>
                     <br>
                     <label><input placeholder="Username" type="text" name="username" required></label><br>

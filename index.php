@@ -24,7 +24,7 @@
                 Our service deliveres food from any restaurant close to you! Join our community!
             </div>
             <a href="signup.php">
-                <div class="col-3 button">
+                <div class="button">
                     Sign Up
                 </div>
             </a>
