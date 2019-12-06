@@ -16,7 +16,7 @@
     </div>
 
     <div class="icon">
-        <input type="search" placeholder="Search">
+        <input class="search" type="search" placeholder="Search">
     </div>
 
     <div class="icon grid">
@@ -41,7 +41,17 @@
             <img src="images/notification.svg" alt="">
         </div>
         <div>
-            <img src="images/burguer.svg" alt="">
+            <div class="burger">
+                <img src="images/burguer.svg" alt="">
+            </div>
+            <div class="burguer-menu">
+                <a href="#"><div>My Profile</div></a>
+                <a href="#"><div>My Cart</div></a>
+                <a href="settings.php"><div>Settings</div></a>
+                <div><form action="actions/logout.php" method="post"><input type="submit" class="button" value="Logout"></form></div>
+            </div>
         </div>
+
+        <div></div>
     </div>
 </nav>

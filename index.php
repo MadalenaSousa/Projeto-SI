@@ -32,5 +32,7 @@
         <div></div>
     </main>
 </div>
+
+<script src="javascript/geral.js"></script>
 </body>
 </html>

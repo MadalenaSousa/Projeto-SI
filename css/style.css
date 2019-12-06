@@ -70,12 +70,34 @@ nav .empty {
     padding-top: 25px;
 }
 
-.icon input {
+.icon .search {
     border: 0;
     border-radius: 40px;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 10px;
     height: 25px;
+}
+
+.burguer-menu {
+    position: absolute;
+    right: 20px;
+    top: 6em;
+    z-index: 1;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    display: none;
+}
+
+.burguer-menu div {
+    margin-bottom: 20px;
+}
+
+.show {
+    display: inherit;
 }
 
 /*Fundo de Imagem*/

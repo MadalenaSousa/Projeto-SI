@@ -30,6 +30,8 @@
         <div></div>
     </div>
 </div>
+
+<script src="javascript/geral.js"></script>
 </body>
 </html>
 
