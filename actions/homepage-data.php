@@ -1,5 +1,5 @@
 <?php
-include("open_connection.php");
+include("connection.php");
 
 $restaurantes = pg_query($connection, "select id,nome, logo_path from restaurante");
 
