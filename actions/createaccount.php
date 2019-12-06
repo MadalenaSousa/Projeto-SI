@@ -7,11 +7,11 @@ $username = $_POST['username'];
 $password = $_POST['confirmpassword'];
 $email = $_POST['email'];
 
-$dadosexistentes = pg_query($connection, "SELECT username FROM utilizador");
+$dadosexistentes = pg_query($connection, "SELECT username, email, foto_perfil_path FROM utilizador");
 $dadosexistentes = pg_fetch_all($dadosexistentes);
 
 foreach ($dadosexistentes as $value) {
-    if($value['username'] == $nome || $value['email'] = $email){
+    if($value['username'] == $username || $value['email'] == $email){
 
         header('Location: ../signup.php');
         break;
@@ -20,9 +20,14 @@ foreach ($dadosexistentes as $value) {
         pg_query($connection, "INSERT INTO utilizador (nome, username, password, email) VALUES ('$nome', '$username', '$password', '$email');")
         or die;
 
+        session_start();
+
+        $_SESSION['nome'] = $nome;
+        $_SESSION['foto'] = $value['foto_perfil_path'];
+
         mailOutputForm($email);
 
-        header('Location: ../profile.phhp');
+        header('Location: ../profile.php');
     }
 }
 
