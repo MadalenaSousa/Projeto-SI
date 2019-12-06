@@ -37,5 +37,7 @@
         <h3>descriçao</h3>
     </div>
 </main>
+
+<script src="javascript/geral.js"></script>
 </body>
 </html>
