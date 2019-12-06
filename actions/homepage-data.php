@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
 
-$restaurantes = pg_query($connection, "select id,nome, logo_path from restaurante");
+$restaurantes = pg_query($connection, "select id,nome, logo_path from restaurante limit 4");
 
 $resultados = pg_fetch_all($restaurantes);
 
