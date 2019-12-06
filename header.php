@@ -1,26 +1,26 @@
-<nav>
-    <a href="index.php">
-        <div class="logo col-2">
+<nav class="grid">
+    <a href="homepage.php">
+        <div class="logo">
             <img src="images/logo.png" alt="">
         </div>
     </a>
-    <div class="icon col-6"></div>
+    <div class="icon"></div>
 
-    <div class="icon col-2">
+    <div class="icon">
         <input type="search" placeholder="Search">
     </div>
 
-    <div class="icon col-2">
-        <div class="col-3">
+    <div class="icon grid">
+        <div>
             <?php echo $_SESSION['nome'] ?>
         </div>
-        <div class="col-3">
+        <div>
             <img src=" . <?php echo $_SESSION['foto'] ?> . "alt="">
         </div>
-        <div class="col-3">
+        <div>
             <img src="images/notification.svg" alt="">
         </div>
-        <div class="col-3">
+        <div>
             <img src="images/burguer.svg" alt="">
         </div>
     </div>

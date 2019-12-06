@@ -9,13 +9,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
-<body class="grid">
+<body>
     <header>
         <?php include('header.php'); ?>
     </header>
-
-    <div class="row">
-        <div class="col-12"></div>
-    </div>
 </body>
 </html>
