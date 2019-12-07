@@ -24,7 +24,7 @@ foreach($ultimosrestaurantes as $restaurante)
 {
     echo '
          <div class="rest">
-            <img src="#" alt="">
+            <img src="" alt="">
             <h3>'.$restaurante['nome'].'</h3>
         </div>
     ';
