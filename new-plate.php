@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-    <?php include('header.php'); ?>
+    <?php include 'header.php'; ?>
 </header>
 <main class="grid-welcome">
         <h1>Fill information about the new food item you want to add</h1>

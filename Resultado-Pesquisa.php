@@ -21,20 +21,14 @@
     <?php include 'actions/homepage-data.php' ?>
 
     <main class="grid">
-
-
         <div class="rest" style="padding: 10px 40px 10px 40px;">
             <img src="" alt="">
             <h3></h3>
             <p></p>
-
         </div>
-
+    </main>
 
 </div>
-
-
-</main>
 
 <script src="javascript/geral.js"></script>
 </body>

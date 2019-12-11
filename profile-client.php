@@ -11,14 +11,17 @@
 </head>
 <body>
 <header>
-    <?php include('header.php'); ?>
+    <?php include 'header.php'; ?>
 </header>
 
 <main class="grid-welcome">
 
     <?php
-        include 'models/utilizador_model.php';
+        include 'database-data-functions/utilizador-data.php';
+        include 'database-data-functions/cliente-data.php';
+
         $user = getUserByUsername($_GET['username']);
+        $cliente = getClientByUsername($_GET['username']);
     ?>
 
     <div>
@@ -38,7 +41,7 @@
             <a href="#">Favorites</a>
             <a href="#">Discounts</a>
             <a href="#">My Orders</a>
-            <a href="wallet.php">Wallet</a>
+            <a href="wallet.php?username=<?php echo $_GET['username'] ?>">Wallet</a>
             <a href="#">Messages</a>
             <a href="#">Edit Profile</a>
         </div>

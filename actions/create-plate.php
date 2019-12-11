@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include dirname(__FILE__) . '/../database-data-functions/comida-data.php';
 
 session_start();
 
@@ -9,10 +9,6 @@ $description = $_POST['descricao'];
 $price = $_POST['preco'];
 $restaurantId = $_SESSION['restauranteId'];
 
-pg_query($connection, "INSERT INTO comida (titulo, descricao, preco, restaurante_id) 
-                                    VALUES ('$name', '$description', '$price', '$restaurantId');")
-or die;
+createComida($name, $description, $price, $restaurantId) or die;
 
-print_r($_SESSION);
-
-//header('Location: ../profile-restaurant.php?username=' . $_SESSION['username']);
+header('Location: ../profile-restaurant.php?username=' . $_SESSION['username']);

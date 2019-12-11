@@ -22,8 +22,10 @@
     </header>
 
     <?php
-        include 'models/comida_model.php';
-        include 'models/utilizador_model.php';
+        include 'database-data-functions/comida-data.php';
+        include 'database-data-functions/utilizador-data.php';
+        include 'database-data-functions/restaurante-data.php';
+
         $user = getUserByUsername($_GET['username']);
     ?>
 
@@ -58,10 +60,20 @@
                         <img src="" alt="">
                         <h3>'.$value['titulo'].'</h3>
                         <p>'.$value['descricao'].'</p>
-                        <p>'.$value['preco'].'</p>
-                        <form method="post"><input type="submit" class="button" value="Delete"></form>
-                        <form><input type="submit" class="button" value="Edit"></form>
-                        <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <p>'.$value['preco'].'</p>';
+
+                if(isset($_SESSION['username']) && $_SESSION['tipo'] == 1) {
+                    echo '<form method="post" action="actions/delete-comida.php?username=' . $_GET['username'] . '">
+                                <input type="hidden" name="id" value="' . $value['id'] . '">
+                                <input type="submit" class="button" value="Delete">
+                           </form>
+                           
+                           <form method="post">
+                                <input type="submit" class="button" value="Edit">
+                           </form>';
+                }
+
+                echo '<button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Detalhes
                         </button>
                       </div>';
@@ -87,7 +99,7 @@
                         foreach (getFoodFromRestaurant($_GET['username']) as $prato) {
                             echo '<h4 class="modal-title">' . $prato['titulo'] . '</h4>
                
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" database-data-functions-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                     </div>
