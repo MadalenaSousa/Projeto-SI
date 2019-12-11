@@ -11,17 +11,23 @@
 </head>
 <body>
 <header>
-    <?php include('header.php'); ?>
+    <?php include 'header.php'; ?>
 </header>
 
-<?php include 'actions/get-logged-client-user-info.php' ?>
+    <?php
+        include 'database-data-functions/utilizador-data.php';
+        include 'database-data-functions/cliente-data.php';
 
-<main class="grid-welcome">
-    <h1>My Budget</h1>
-    <p><?php echo "My Full Budged: " . $user['saldo'] ?></p>
-    <p><?php echo "How much I've Spent: "?></p>
-    <p><?php echo "My Available Budged: "?></p>
-</main>
+        $user = getUserByUsername($_GET['username']);
+        $cliente = getClientByUsername($_GET['username']);
+    ?>
+
+    <main class="grid-welcome">
+        <h1>My Budget</h1>
+        <p><?php echo "My Full Budged: " . $cliente['saldo'] ?></p>
+        <p><?php echo "How much I've Spent: "?></p>
+        <p><?php echo "My Available Budged: "?></p>
+    </main>
 
 <script src="javascript/geral.js"></script>
 </body>
