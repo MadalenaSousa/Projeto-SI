@@ -54,6 +54,7 @@
         </div>
         <div class="grid">
             <?php
+            
             foreach(getFoodFromRestaurant($_GET['username']) as $value)
             {
                 echo '<div>
@@ -77,6 +78,7 @@
                             Detalhes
                         </button>
                       </div>';
+                }
             }
             ?>
         </div>

@@ -16,8 +16,10 @@
     <div class="empty"></div>
 
     <div class="icon">
-        <input class="search" type="search" placeholder="Search">
-
+        <form method="get" action="resultado-pesquisa.php">
+            <input class="search" type="search" name="search" placeholder="Search">
+            <input type="submit" class="button" value="Search">
+        </form>
 
     </div>
 
