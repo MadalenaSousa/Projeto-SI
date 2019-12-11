@@ -15,12 +15,15 @@
 </header>
 
 <main class="grid-welcome">
+
+    <?php include 'actions/get-user-info.php'?>
+
     <div>
         <div>
             <img src="#" alt="">
         </div>
         <div>
-            <h1><?php echo $_SESSION['nome'] ?></h1>
+            <h1><?php echo $user['nome'] ?></h1>
         </div>
         <div>
             <a href="#">About</a>

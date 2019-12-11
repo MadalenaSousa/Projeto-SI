@@ -13,7 +13,6 @@
 
 <header>
     <?php include 'header.php' ?>
-
 </header>
 
 <?php include 'actions/homepage-data.php' ?>
@@ -25,7 +24,7 @@ foreach($ultimosrestaurantes as $restaurante)
     echo '
          <div class="rest">
             <img src="" alt="">
-            <h3>'.$restaurante['nome'].'</h3>
+            <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'"><h3>'.$restaurante['nome'].'</h3></a>
             <p>'.$restaurante['id'].'</p>
         </div>
     ';

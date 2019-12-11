@@ -10,20 +10,21 @@
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body>
+    <!--?php include 'actions/get-plates-for-restaurant.php' ?-->
+
     <header>
         <?php include('header.php'); ?>
     </header>
 
+    <?php include 'actions/get-user-info.php' ?>
+
     <main class="grid-welcome">
         <div>
             <div>
-                <img src="<?php if(isset($_SESSION['foto'])) {
-                                    echo $_SESSION['foto'];
-                                }
-                            ?>" alt="">
+                <img src="<?php echo $user['foto_perfil_path'] ?>" alt="">
             </div>
             <div>
-                <h1><?php echo $_SESSION['nome'] ?></h1>
+                <h1><?php echo $user['nome'] ?></h1>
             </div>
             <div>
                 <a href="#">About</a>
@@ -41,26 +42,17 @@
                 <h3>Nome</h3>
                 <div class="button">DETAILS</div>
             </div>
-            <div>
-                <img src="#" alt="">
-                <h3>Nome</h3>
-                <div class="button">DETAILS</div>
-            </div>
-            <div>
-                <img src="#" alt="">
-                <h3>Nome</h3>
-                <div class="button">DETAILS</div>
-            </div>
-            <div>
-                <img src="#" alt="">
-                <h3>Nome</h3>
-                <div class="button">DETAILS</div>
-            </div>
         </div>
+        <?php echo $_SESSION['username'];
+                echo $user['username'];
+                print_r($_SESSION);
 
-        <div>
-            <a class="button" href="new-plate.php">ADD NEW PLATE</a>
-        </div>
+        if($_SESSION['username'] = $user['username']) {
+            echo '<div>
+                <a class="button" href="new-plate.php">ADD NEW PLATE</a>
+              </div>';
+        }
+        ?>
     </main>
 
     <script src="javascript/geral.js"></script>
