@@ -35,7 +35,7 @@
             <a href="#">Favorites</a>
             <a href="#">Discounts</a>
             <a href="#">My Orders</a>
-            <a href="#">Wallet</a>
+            <a href="wallet.php">Wallet</a>
             <a href="#">Messages</a>
             <a href="#">Edit Profile</a>
         </div>

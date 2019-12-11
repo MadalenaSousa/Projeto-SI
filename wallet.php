@@ -18,7 +18,9 @@
 
 <main class="grid-welcome">
     <h1>My Budget</h1>
-    <p><?php echo $user[''] ?></p>
+    <p><?php echo "My Full Budged: " . $user['saldo'] ?></p>
+    <p><?php echo "How much I've Spent: "?></p>
+    <p><?php echo "My Available Budged: "?></p>
 </main>
 
 <script src="javascript/geral.js"></script>
