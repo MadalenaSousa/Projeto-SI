@@ -1,4 +1,4 @@
-:root{
+:root {
     --amarelo: #FFE485;
     --menta: #77CAB6;
 }
@@ -135,9 +135,15 @@ nav .empty {
 /*Homepage*/
 
 .rest {
+
     height: 200px;
     background-color: white;
     border-radius: 40px;
+
+
+
+
+
 }
 
 
