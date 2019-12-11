@@ -16,26 +16,21 @@
 
 </header>
 
+<?php include 'actions/homepage-data.php' ?>
+
 <main class="grid">
-
-
-    <div class="rest">
-
-        <img src="#" alt="">
-        <h3>descriçao</h3>
-    </div>
-    <div class="rest">
-        <img src="#" alt="">
-        <h3>descriçao</h3>
-    </div>
-    <div class="rest">
-        <img src="#" alt="">
-        <h3>descriçao</h3>
-    </div>
-    <div class="rest">
-        <img src="#" alt="">
-        <h3>descriçao</h3>
-    </div>
+<?php
+foreach($ultimosrestaurantes as $restaurante)
+{
+    echo '
+         <div class="rest">
+            <img src="" alt="">
+            <h3>'.$restaurante['nome'].'</h3>
+            <p>'.$restaurante['id'].'</p>
+        </div>
+    ';
+}
+?>
 </main>
 
 <script src="javascript/geral.js"></script>
