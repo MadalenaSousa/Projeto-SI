@@ -6,7 +6,14 @@
     <meta charset="UTF-8">
     <title>LDMEats | Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
+
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body>
@@ -48,6 +55,9 @@
                         <h3>'.$value['titulo'].'</h3>
                         <p>'.$value['descricao'].'</p>
                         <p>'.$value['preco'].'</p>
+                        <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Detalhes
+                        </button>
                       </div>';
             }
             ?>
@@ -60,6 +70,36 @@
               </div>';
         }
         ?>
+
+        <!-- DETALHES DO PRATO -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <?php
+
+                        foreach ($pratos as $prato) {
+                            echo '<h4 class="modal-title">' . $prato['titulo'] . '</h4>
+               
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <p>' . $prato['descricao'] . '</p>';
+                        }
+                        ?>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" style="background-color: grey" class="button btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="button btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="javascript/geral.js"></script>
