@@ -2,13 +2,15 @@
 
 include('connection.php');
 
+session_start();
+
 $name = $_POST['name'];
-$description = $_POST['description'];
-$price = $_POST['price'];
-$restaurantId = $_SESSION['id'];
+$description = $_POST['descricao'];
+$price = $_POST['preco'];
+$restaurantId = $_SESSION['restauranteId'];
 
 pg_query($connection, "INSERT INTO comida (titulo, descricao, preco, restaurante_id) 
                                     VALUES ('$name', '$description', '$price', '$restaurantId');")
 or die;
 
-header('Location: ../profile-restaurant.php');
+header('Location: ../profile-restaurant.php?username=' . $_GET['username']);

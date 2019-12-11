@@ -15,14 +15,14 @@
 </header>
 <main class="grid-welcome">
         <h1>Fill information about the new food item you want to add</h1>
-        <form method="post" action="actions/create-plate.php">
+        <form method="post" action="actions/create-plate.php?username=<?php echo $_GET['username']?>">
             <label><input placeholder="Name" type="text" name="name" required></label><br>
             <br>
             <label><input placeholder="Description" type="text" name="descricao" required></label><br>
             <br>
             <label><input placeholder="Price" type="text" name="preco" required></label><br>
             <br>
-            <label><input placeholder="Picture" type="text" name="foto" required></label><br>
+            <label><input placeholder="Picture" type="text" name="foto"></label><br>
             <br>
             <input type="submit" class="button" value="ADD">
         </form>

@@ -10,13 +10,12 @@
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body>
-    <!--?php include 'actions/get-plates-for-restaurant.php' ?-->
-
     <header>
         <?php include('header.php'); ?>
     </header>
 
     <?php include 'actions/get-user-info.php' ?>
+    <?php include 'actions/get-plates-for-restaurant.php' ?>
 
     <main class="grid-welcome">
         <div>
@@ -37,19 +36,22 @@
             Menu
         </div>
         <div class="grid">
-            <div>
-                <img src="#" alt="">
-                <h3>Nome</h3>
-                <div class="button">DETAILS</div>
-            </div>
+            <?php
+            foreach($pratos as $value)
+            {
+                echo '<div>
+                        <img src="" alt="">
+                        <h3>'.$value['titulo'].'</h3>
+                        <p>'.$value['descricao'].'</p>
+                        <p>'.$value['preco'].'</p>
+                      </div>';
+            }
+            ?>
         </div>
-        <?php echo $_SESSION['username'];
-                echo $user['username'];
-                print_r($_SESSION);
-
+        <?php
         if($_SESSION['username'] = $user['username']) {
             echo '<div>
-                <a class="button" href="new-plate.php">ADD NEW PLATE</a>
+                <a class="button" href="new-plate.php?username='.$user['username'].'">ADD NEW PLATE</a>
               </div>';
         }
         ?>

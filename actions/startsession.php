@@ -21,6 +21,11 @@ if (pg_num_rows($login) == 1) {
     $_SESSION['nome'] = $dados_utilizador['nome'];
     $_SESSION['tipo'] = $dados_utilizador['tipo_id'];
 
+    if($dados_utilizador['tipo_id'] = 1) {
+        $dados_restaurante = pg_fetch_array(pg_query("SELECT id, utilizador_username FROM restaurante WHERE utilizador_username = '$username'"));
+        $_SESSION['restauranteId'] = $dados_restaurante['id'];
+    }
+
     header('Location: ../homepage.php');
 
 } else {
