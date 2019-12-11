@@ -15,19 +15,27 @@
 </header>
 
 <main class="grid-welcome">
+
+    <?php include 'actions/get-restaurant-info.php' ?>
+
     <div>
         <div>
-            <img src="#" alt="">
+            <img src="<?php
+            if($user['foto_perfil_path'] != null) {
+                echo $user['foto_perfil_path'];
+            } else {
+                echo "images/default-profile-pic";
+            } ?>" alt="">
         </div>
         <div>
-            <h1><?php echo $_SESSION['nome'] ?></h1>
+            <h1><?php echo $user['nome'] ?></h1>
         </div>
         <div>
             <a href="#">About</a>
             <a href="#">Favorites</a>
             <a href="#">Discounts</a>
             <a href="#">My Orders</a>
-            <a href="#">Wallet</a>
+            <a href="wallet.php">Wallet</a>
             <a href="#">Messages</a>
             <a href="#">Edit Profile</a>
         </div>
