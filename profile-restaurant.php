@@ -57,6 +57,10 @@
                 <div class="button">DETAILS</div>
             </div>
         </div>
+
+        <div>
+            <a class="button" href="new-plate.php">ADD NEW PLATE</a>
+        </div>
     </main>
 
     <script src="javascript/geral.js"></script>
