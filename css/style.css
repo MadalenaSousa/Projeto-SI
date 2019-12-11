@@ -78,6 +78,10 @@ nav .empty {
     height: 25px;
 }
 
+.burger {
+    cursor: pointer;
+}
+
 .burguer-menu {
     position: absolute;
     right: 20px;
