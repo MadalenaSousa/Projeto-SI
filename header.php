@@ -45,9 +45,17 @@
                 <img src="images/burguer.svg" alt="">
             </div>
             <div class="burguer-menu">
-                <a href="profile-client.php?username=<?php echo $_SESSION['username'] ?>"><div>My Profile</div></a>
+                <a href="<?php if($_SESSION['tipo'] = 1) {
+                                    echo 'profile-restaurant.php?username=' . $_SESSION['username'];
+                                } else if($_SESSION['tipo'] = 2) {
+                                    echo 'profile-client.php?username=' . $_SESSION['username'];
+                                }
+                         ?>"><div>My Profile</div></a>
+
                 <a href="#"><div>My Cart</div></a>
+
                 <a href="settings.php"><div>Settings</div></a>
+
                 <div><form action="actions/logout.php" method="post"><input type="submit" class="button" value="Logout"></form></div>
             </div>
         </div>
