@@ -32,36 +32,42 @@
             <img src="" alt="">
             <h3>' . $restaurante['nome'] . '</h3>
             <p>' . $restaurante['id'] . '</p>
-        
-     
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"style="background-color:#77CAB6;border:0px;  border-radius: 40px; margin-left:70%" >Detalhes</button>
-    
-       <div class="modal fade" id="myModal" role="dialog">
-  
- \\fazer um foreach para ir buscar os pratos na model 
-       foreach ($pratos as $prato) {
-     
-      <div class="modal-content" style="width: 500px">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>/*. $prato[descricao] . */</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
+             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+                style="background-color:#77CAB6;border:0px;  border-radius: 40px; margin-left:70%">Detalhes
+        </button>
+</div>
         
     ';
-
         }
         ?>
+
+
+        <div class="modal fade" id="myModal" role="dialog">
+
+
+            <div class="modal-content" style="width: 500px">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <?php
+                    foreach ($pratos as $prato) {
+                        echo '
+          <h4 class="modal-title">Descrição do prato</h4>
+        </div>
+        <div class="modal-body">
+          <p>' . $prato['descricao'] . '</p>
+        </div>
+          ';
+                    }
+                    ?>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 
     </main>
 

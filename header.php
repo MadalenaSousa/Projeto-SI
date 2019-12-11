@@ -17,6 +17,8 @@
 
     <div class="icon">
         <input class="search" type="search" placeholder="Search">
+
+
     </div>
 
     <div class="icon grid">
