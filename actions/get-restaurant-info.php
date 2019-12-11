@@ -4,6 +4,9 @@ include 'connection.php';
 
 $username = $_GET['username'];
 
+$id_restaurante = $_GET['id'];
+
+
 $user = pg_fetch_array(pg_query("SELECT * FROM utilizador WHERE username = '$username'"));
 
 $pratos = pg_fetch_all(pg_query($connection,

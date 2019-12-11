@@ -48,17 +48,18 @@
         </div>
         <div class="grid">
             <?php
-            foreach($pratos as $value)
-            {
-                echo '<div>
+            if(!empty($pratos)) {
+                foreach ($pratos as $value) {
+                    echo '<div>
                         <img src="" alt="">
-                        <h3>'.$value['titulo'].'</h3>
-                        <p>'.$value['descricao'].'</p>
-                        <p>'.$value['preco'].'</p>
+                        <h3>' . $value['titulo'] . '</h3>
+                        <p>' . $value['descricao'] . '</p>
+                        <p>' . $value['preco'] . '</p>
                         <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Detalhes
                         </button>
                       </div>';
+                }
             }
             ?>
         </div>
