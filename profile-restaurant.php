@@ -21,7 +21,11 @@
         <?php include('header.php'); ?>
     </header>
 
-    <?php include 'actions/get-restaurant-info.php' ?>
+    <?php
+        include 'models/comida_model.php';
+        include 'models/utilizador_model.php';
+        $user = getUserByUsername($_GET['username']);
+    ?>
 
     <main class="grid-welcome">
         <div>
@@ -48,13 +52,15 @@
         </div>
         <div class="grid">
             <?php
-            foreach($pratos as $value)
+            foreach(getFoodFromRestaurant($_GET['username']) as $value)
             {
                 echo '<div>
                         <img src="" alt="">
                         <h3>'.$value['titulo'].'</h3>
                         <p>'.$value['descricao'].'</p>
                         <p>'.$value['preco'].'</p>
+                        <form method="post"><input type="submit" class="button" value="Delete"></form>
+                        <form><input type="submit" class="button" value="Edit"></form>
                         <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Detalhes
                         </button>
@@ -62,9 +68,8 @@
             }
             ?>
         </div>
-        <?php echo $_SESSION['username'];
-                echo $user['username'];
-        if($_SESSION['username'] = $user['username']) {
+        <?php
+        if($_SESSION['username'] == $user['username']) {
             echo '<div>
                 <a class="button" href="new-plate.php">ADD NEW PLATE</a>
               </div>';
@@ -79,7 +84,7 @@
                     <div class="modal-header">
                         <?php
 
-                        foreach ($pratos as $prato) {
+                        foreach (getFoodFromRestaurant($_GET['username']) as $prato) {
                             echo '<h4 class="modal-title">' . $prato['titulo'] . '</h4>
                
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

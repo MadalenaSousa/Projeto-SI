@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include(dirname(__FILE__) . '/../models/utilizador_model.php');
 
 if(isset($_SESSION['username'])) {
 
@@ -15,15 +15,9 @@ if(isset($_SESSION['username'])) {
 
     if($existe) {
         header('Location: ../signup.php');
-
     } else {
-        pg_query($connection, "INSERT INTO utilizador (nome, username, password, email, tipo_id) 
-                                    VALUES ('$nome', '$username', '$password', '$email', 2);")
-        or die;
-
-        pg_query($connection, "INSERT INTO cliente (saldo, utilizador_username) 
-                                    VALUES ('$saldo', '$username');")
-        or die;
+        createUser($nome, $username, $password, $email, 2) or die;
+        createClient($saldo, $username) or die;
 
         session_start();
 
@@ -32,7 +26,7 @@ if(isset($_SESSION['username'])) {
 
         mailOutputForm($email);
 
-        header('Location: ../profile-client.php');
+        header('Location: ../profile-client.php?username=' . $username);
     }
 
 }

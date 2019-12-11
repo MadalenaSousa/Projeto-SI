@@ -16,7 +16,10 @@
 
 <main class="grid-welcome">
 
-    <?php include 'actions/get-restaurant-info.php' ?>
+    <?php
+        include 'models/utilizador_model.php';
+        $user = getUserByUsername($_GET['username']);
+    ?>
 
     <div>
         <div>
