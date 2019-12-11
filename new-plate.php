@@ -15,7 +15,7 @@
 </header>
 <main class="grid-welcome">
         <h1>Fill information about the new food item you want to add</h1>
-        <form method="post" action="actions/create-plate.php?username=<?php echo $_GET['username']?>">
+        <form method="post" action="actions/create-plate.php">
             <label><input placeholder="Name" type="text" name="name" required></label><br>
             <br>
             <label><input placeholder="Description" type="text" name="descricao" required></label><br>

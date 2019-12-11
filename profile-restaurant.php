@@ -14,13 +14,17 @@
         <?php include('header.php'); ?>
     </header>
 
-    <?php include 'actions/get-user-info.php' ?>
-    <?php include 'actions/get-plates-for-restaurant.php' ?>
+    <?php include 'actions/get-restaurant-info.php' ?>
 
     <main class="grid-welcome">
         <div>
             <div>
-                <img src="<?php echo $user['foto_perfil_path'] ?>" alt="">
+                <img src="<?php
+                if($user['foto_perfil_path'] != null) {
+                    echo $user['foto_perfil_path'];
+                } else {
+                    echo "images/default-profile-pic";
+                } ?>" alt="">
             </div>
             <div>
                 <h1><?php echo $user['nome'] ?></h1>
@@ -48,10 +52,11 @@
             }
             ?>
         </div>
-        <?php
+        <?php echo $_SESSION['username'];
+                echo $user['username'];
         if($_SESSION['username'] = $user['username']) {
             echo '<div>
-                <a class="button" href="new-plate.php?username='.$user['username'].'">ADD NEW PLATE</a>
+                <a class="button" href="new-plate.php">ADD NEW PLATE</a>
               </div>';
         }
         ?>

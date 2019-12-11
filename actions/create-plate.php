@@ -13,4 +13,6 @@ pg_query($connection, "INSERT INTO comida (titulo, descricao, preco, restaurante
                                     VALUES ('$name', '$description', '$price', '$restaurantId');")
 or die;
 
-header('Location: ../profile-restaurant.php?username=' . $_GET['username']);
+print_r($_SESSION);
+
+//header('Location: ../profile-restaurant.php?username=' . $_SESSION['username']);

@@ -16,11 +16,16 @@
 
 <main class="grid-welcome">
 
-    <?php include 'actions/get-user-info.php'?>
+    <?php include 'actions/get-restaurant-info.php' ?>
 
     <div>
         <div>
-            <img src="#" alt="">
+            <img src="<?php
+            if($user['foto_perfil_path'] != null) {
+                echo $user['foto_perfil_path'];
+            } else {
+                echo "images/default-profile-pic";
+            } ?>" alt="">
         </div>
         <div>
             <h1><?php echo $user['nome'] ?></h1>
