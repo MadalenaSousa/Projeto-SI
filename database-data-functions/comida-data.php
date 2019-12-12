@@ -15,6 +15,10 @@ function getFoodFromRestaurant($restaurantUsername) {
           AND restaurante.id = comida.restaurante_id"));
 }
 
+function getFoodById($id) {
+    return pg_fetch_array(pg_query(getDBConnection(), "SELECT * FROM comida WHERE comida.id = '$id'"));
+}
+
 function deleteComida($comidaId) {
     return pg_query(getDBConnection(), "DELETE FROM comida WHERE comida.id = '$comidaId'");
 }

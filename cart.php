@@ -10,9 +10,21 @@
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body>
+
+    <?php
+        include 'database-data-functions/comida-data.php';
+        include 'database-data-functions/restaurante-data.php';
+    ?>
+
+
 <header>
     <?php include 'header.php'; ?>
 </header>
+
+<main>
+    <?php  ?>
+
+</main>
 
 <script src="javascript/geral.js"></script>
 </body>
