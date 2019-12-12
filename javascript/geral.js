@@ -1,4 +1,4 @@
-/*let button = document.querySelector(".burger");
+let button = document.querySelector(".burger");
 
 button.addEventListener("click", function(evt) {
     console.log("button click", evt);
@@ -16,5 +16,3 @@ document.addEventListener("click", function(event) {
         document.querySelector(".burguer-menu").classList.remove("show");
     }
 });
-
-*/

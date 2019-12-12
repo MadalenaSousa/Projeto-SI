@@ -10,15 +10,11 @@
 <body class="grid">
 <div class="fundo" style="background-image: url('images/fundo.jpg');">
     <header>
-        <?php include('header.php'); ?>
+        <?php include 'header.php'; ?>
     </header>
 
-    <div class="row">
-        <div class="col-3 empty"></div>
-        <div class="col-6 welcome">
+    <div class="grid-welcome">
             Please check your email to finish your registration.
-        </div>
-        <div class="col-3 empty"></div>
     </div>
 </div>
 </body>

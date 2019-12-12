@@ -12,7 +12,7 @@
 <body>
 <div class="fundo" style="background-image: url('images/fundo.jpg');">
     <header>
-        <?php include('header.php'); ?>
+        <?php include 'header.php'; ?>
     </header>
 
     <main class="grid">

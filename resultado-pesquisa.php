@@ -20,9 +20,8 @@
 
     <main class="grid">
 
-
             <?php
-            include 'actions/Pesquisa-filtrar.php';
+            include 'actions/pesquisa-filtrar.php';
 
             if(isset($restaurantes) && !empty($restaurantes)){
                 foreach ($restaurantes as $restaurante) {
@@ -38,30 +37,23 @@
                     </div>';
                 }
             }
-
             if(isset($comidas) && !empty($comidas)) {
                 foreach ($comidas as $comida) {
                     echo '
                     <div class="rest" style="">
                       <img src="" alt="">
                       
-                      <a href="profile-plate.php?id=' . $comida['id'] . '">
+                      <a href="profile-plate.php?id=' . $comida['id'] . '"> <!-- Profile plate?? Supostamente é para usar o modal -->
                         <h3>' . $comida['titulo'] . '</h3>
                       </a>
                       
                       <p>' . $comida['id'] . '</p>     
                     </div>';
-                        }
+                }
             }
-
             ?>
-        </div>
-
-
+    </main>
 </div>
-
-
-</main>
 
 <script src="javascript/geral.js"></script>
 </body>

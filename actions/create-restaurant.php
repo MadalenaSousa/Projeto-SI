@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include dirname(__FILE__) . '/../database-data-functions/utilizador-data.php';
 
 if(isset($_SESSION['username'])) {
 
@@ -8,30 +8,28 @@ if(isset($_SESSION['username'])) {
 
 } else {
 
-    include 'verify-user.php';
-    include 'mail-registration.php';
+    $nome = $_POST['name'];
+    $username = $_POST['username'];
+    $password = $_POST['confirmpassword'];
+    $email = $_POST['email'];
 
-    if($existe) {
+    if(userExists($username, $email)) {
         header('Location: ../signup.php');
 
     } else {
 
-        pg_query($connection, "INSERT INTO utilizador (nome, username, password, email, tipo_id) 
-                                    VALUES ('$nome', '$username', '$password', '$email', 1);")
-        or die;
-
-        pg_query($connection, "INSERT INTO restaurante (nome, utilizador_username) 
-                                    VALUES ('$nome', '$username');")
-        or die;
+        createUser($nome, $username, $password, $email, 1) or die;
+        createRestaurant($username, $nome) or die;
 
         session_start();
 
         $_SESSION['nome'] = $nome;
         $_SESSION['username'] = $username;
+        $_SESSION['tipo'] = 1;
 
         mailOutputForm($email);
 
-        header('Location: ../profile-restaurant.php');
+        header('Location: ../profile-restaurant.php?username=' . $username);
     }
 }
 

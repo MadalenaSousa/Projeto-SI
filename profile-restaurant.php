@@ -21,7 +21,13 @@
         <?php include('header.php'); ?>
     </header>
 
-    <?php include 'actions/get-restaurant-info.php' ?>
+    <?php
+        include 'database-data-functions/comida-data.php';
+        include 'database-data-functions/utilizador-data.php';
+        include 'database-data-functions/restaurante-data.php';
+
+        $user = getUserByUsername($_GET['username']);
+    ?>
 
     <main class="grid-welcome">
         <div>
@@ -48,14 +54,27 @@
         </div>
         <div class="grid">
             <?php
-            if(!empty($pratos)) {
-                foreach ($pratos as $value) {
+            if(!empty(getFoodFromRestaurant($_GET['username']))) {
+                foreach(getFoodFromRestaurant($_GET['username']) as $value)
+                {
                     echo '<div>
                         <img src="" alt="">
                         <h3>' . $value['titulo'] . '</h3>
                         <p>' . $value['descricao'] . '</p>
-                        <p>' . $value['preco'] . '</p>
-                        <button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <p>' . $value['preco'] . '</p>';
+
+                    if (isset($_SESSION['username']) && $_SESSION['tipo'] == 1) {
+                        echo '<form method="post" action="actions/delete-comida.php?username=' . $_GET['username'] . '">
+                                <input type="hidden" name="id" value="' . $value['id'] . '">
+                                <input type="submit" class="button" value="Delete">
+                           </form>
+                           
+                           <form method="post">
+                                <input type="submit" class="button" value="Edit">
+                           </form>';
+                    }
+
+                    echo '<button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Detalhes
                         </button>
                       </div>';
@@ -63,9 +82,8 @@
             }
             ?>
         </div>
-        <?php echo $_SESSION['username'];
-                echo $user['username'];
-        if($_SESSION['username'] = $user['username']) {
+        <?php
+        if($_SESSION['username'] == $user['username']) {
             echo '<div>
                 <a class="button" href="new-plate.php">ADD NEW PLATE</a>
               </div>';
@@ -80,10 +98,10 @@
                     <div class="modal-header">
                         <?php
 
-                        foreach ($pratos as $prato) {
+                        foreach (getFoodFromRestaurant($_GET['username']) as $prato) {
                             echo '<h4 class="modal-title">' . $prato['titulo'] . '</h4>
                
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" database-data-functions-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                     </div>

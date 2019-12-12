@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include dirname(__FILE__) . '/../database-data-functions/utilizador-data.php';
 
 if(isset($_SESSION['username'])) {
 
@@ -8,31 +8,27 @@ if(isset($_SESSION['username'])) {
 
 } else {
 
-    include 'verify-user.php';
-    include 'mail-registration.php';
-
+    $nome = $_POST['name'];
+    $username = $_POST['username'];
+    $password = $_POST['confirmpassword'];
+    $email = $_POST['email'];
     $saldo = $_POST['saldo'];
 
-    if($existe) {
+    if(userExists($username, $email) == True) {
         header('Location: ../signup.php');
-
     } else {
-        pg_query($connection, "INSERT INTO utilizador (nome, username, password, email, tipo_id) 
-                                    VALUES ('$nome', '$username', '$password', '$email', 2);")
-        or die;
-
-        pg_query($connection, "INSERT INTO cliente (saldo, utilizador_username) 
-                                    VALUES ('$saldo', '$username');")
-        or die;
+        createUser($nome, $username, $password, $email, 2) or die;
+        createClient($saldo, $username) or die;
 
         session_start();
 
         $_SESSION['nome'] = $nome;
         $_SESSION['username'] = $username;
+        $_SESSION['tipo'] = 2;
 
         mailOutputForm($email);
 
-        header('Location: ../profile-client.php');
+        header('Location: ../profile-client.php?username=' . $username);
     }
 
 }
