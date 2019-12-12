@@ -22,10 +22,13 @@
         <?php include 'header.php' ?>
     </header>
 
-    <?php include 'actions/homepage-data.php' ?>
+    <?php include 'database-data-functions/restaurante-data.php' ?>
 
     <main class="grid">
+
         <?php
+        $ultimosrestaurantes=getLastRestaurants(4);
+
         foreach ($ultimosrestaurantes as $restaurante) {
             echo '
             <div class="rest" style="">
