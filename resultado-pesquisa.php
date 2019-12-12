@@ -19,11 +19,11 @@
     </header>
 
     <main class="grid">
-
         <div class="rest" style="padding: 10px 40px 10px 40px;">
 
             <?php
-            include 'actions/Pesquisa-filtrar.php';
+            include 'actions/pesquisa-filtrar.php';
+
             if(isset($restaurantes) && !empty($restaurantes)){
                 foreach ($restaurantes as $restaurante) {
                     echo '
