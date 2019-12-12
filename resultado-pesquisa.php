@@ -18,16 +18,43 @@
 
     </header>
 
-    <?php include 'actions/homepage-data.php' ?>
-
     <main class="grid">
+
         <div class="rest" style="padding: 10px 40px 10px 40px;">
-            <img src="" alt="">
-            <h3></h3>
-            <p></p>
+
+            <?php
+            include 'actions/Pesquisa-filtrar.php';
+            if(isset($restaurantes) && !empty($restaurantes)){
+                foreach ($restaurantes as $restaurante) {
+                    echo '
+                    <div class="rest" style="">
+                      <img src="" alt="">
+                      
+                      <a href="profile-restaurant.php?id='. $restaurante['id'] .'">
+                        <h3>'.$restaurante['nome'].'</h3>
+                      </a>
+                      
+                      <p>'.$restaurante['id'].'</p>     
+                    </div>';
+                }
+            }
+            if(isset($comidas) && !empty($comidas)) {
+                foreach ($comidas as $comida) {
+                    echo '
+                    <div class="rest" style="">
+                      <img src="" alt="">
+                      
+                      <a href="profile-plate.php?id=' . $comida['id'] . '"> <!-- Profile plate?? Supostamente é para usar o modal -->
+                        <h3>' . $comida['titulo'] . '</h3>
+                      </a>
+                      
+                      <p>' . $comida['id'] . '</p>     
+                    </div>';
+                }
+            }
+            ?>
         </div>
     </main>
-
 </div>
 
 <script src="javascript/geral.js"></script>

@@ -54,17 +54,17 @@
         </div>
         <div class="grid">
             <?php
-            
-            foreach(getFoodFromRestaurant($_GET['username']) as $value)
-            {
-                echo '<div>
+            if(!empty(getFoodFromRestaurant($_GET['username']))) {
+                foreach(getFoodFromRestaurant($_GET['username']) as $value)
+                {
+                    echo '<div>
                         <img src="" alt="">
-                        <h3>'.$value['titulo'].'</h3>
-                        <p>'.$value['descricao'].'</p>
-                        <p>'.$value['preco'].'</p>';
+                        <h3>' . $value['titulo'] . '</h3>
+                        <p>' . $value['descricao'] . '</p>
+                        <p>' . $value['preco'] . '</p>';
 
-                if(isset($_SESSION['username']) && $_SESSION['tipo'] == 1) {
-                    echo '<form method="post" action="actions/delete-comida.php?username=' . $_GET['username'] . '">
+                    if (isset($_SESSION['username']) && $_SESSION['tipo'] == 1) {
+                        echo '<form method="post" action="actions/delete-comida.php?username=' . $_GET['username'] . '">
                                 <input type="hidden" name="id" value="' . $value['id'] . '">
                                 <input type="submit" class="button" value="Delete">
                            </form>
@@ -72,9 +72,9 @@
                            <form method="post">
                                 <input type="submit" class="button" value="Edit">
                            </form>';
-                }
+                    }
 
-                echo '<button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    echo '<button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Detalhes
                         </button>
                       </div>';
