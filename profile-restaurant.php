@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LDMEats | Profile</title>
+    <title>LDMEats | Restaurant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/style.css">
@@ -38,9 +38,7 @@
                 <h1><?php echo $user['nome'] ?></h1>
             </div>
             <div>
-                <a href="#">About</a>
                 <a href="#">Discounts</a>
-                <a href="#">Messages</a>
                 <a href="#">Edit Profile</a>
             </div>
         </div>
