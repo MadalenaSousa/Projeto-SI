@@ -15,16 +15,16 @@ function userExists($username, $email){
     $dadosexistentes = pg_query(getDBConnection(), "SELECT username, email FROM utilizador");
     $dadosexistentes = pg_fetch_all($dadosexistentes);
 
-    $existe = False;
+    $existe = false;
 
     if(empty($dadosexistentes)) {
-        $existe = False;
+        $existe = false;
     } else {
         foreach ($dadosexistentes as $value) {
             if ($value['username'] == $username || $value['email'] == $email) {
-                $existe = True;
+                $existe = true;
             } else {
-                $existe = False;
+                $existe = false;
             }
         }
     }
