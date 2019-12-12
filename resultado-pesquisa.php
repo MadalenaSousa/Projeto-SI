@@ -20,7 +20,6 @@
 
     <main class="grid">
 
-        <div class="rest" style="padding: 10px 40px 10px 40px;">
 
             <?php
             include 'actions/Pesquisa-filtrar.php';
@@ -28,7 +27,7 @@
             if(isset($restaurantes) && !empty($restaurantes)){
                 foreach ($restaurantes as $restaurante) {
                     echo '
-                    <div class="rest" style="">
+                    <div class="rest" style="width: 20%;">
                       <img src="" alt="">
                       
                       <a href="profile-restaurant.php?id='. $restaurante['id'] .'">
