@@ -67,17 +67,17 @@
                         echo '<form method="post" action="actions/delete-comida.php?username=' . $_GET['username'] . '">
                                 <input type="hidden" name="id" value="' . $value['id'] . '">
                                 <input type="submit" class="button" value="Delete">
-                           </form>
-                           
-                           <form method="post">
+                              </form>
+                               
+                              <form method="post">
                                 <input type="submit" class="button" value="Edit">
-                           </form>';
+                              </form>';
                     }
 
-                    echo '<button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Detalhes
-                        </button>
-                      </div>';
+                        echo '<a href="plate-detail.php?id=' . $value['id'] . '">
+                                <div class="button">Detalhes</div>
+                              </a>
+                            </div>';
                 }
             }
             ?>
@@ -98,23 +98,36 @@
                     <div class="modal-header">
                         <?php
 
-                        foreach (getFoodFromRestaurant($_GET['username']) as $prato) {
-                            echo '<h4 class="modal-title">' . $prato['titulo'] . '</h4>
+                        if(isset($_POST['detalhe'])) {
+                            $comida = getFoodById($_POST['id']);
+
+                            echo '<h4 class="modal-title">' . $comida['titulo'] . '</h4>
                
-                            <button type="button" class="close" database-data-functions-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                     </div>
                     
                     <div class="modal-body">
-                        <p>' . $prato['descricao'] . '</p>';
+                        <p>' . $comida['descricao'] . '</p>';
                         }
                         ?>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" style="background-color: grey" class="button btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="button btn btn-primary">Add to Cart</button>
+
+                        <form method="post" action="actions/add-cart.php">
+                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="compra-imediata" value="1">
+                            <input type="button" class="button btn btn-primary" value="Add To Cart">
+                        </form>
+
+                        <form method="post" action="actions/add-cart.php">
+                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="compra-imediata" value="1">
+                            <input type="submit" class="button btn btn-primary" value="Instant Buy">
+                        </form>
                     </div>
                 </div>
             </div>

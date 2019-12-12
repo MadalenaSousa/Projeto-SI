@@ -10,9 +10,26 @@
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body>
+
+    <?php
+        include 'database-data-functions/comida-data.php';
+        include 'database-data-functions/restaurante-data.php';
+
+        for ($i = 0; $i < count($_SESSION['pratos']); $i++) {
+            $comida[$i] = getFoodById($_SESSION['pratos'][]);
+        }
+    ?>
+
+
 <header>
     <?php include 'header.php'; ?>
 </header>
+
+<main>
+
+    <?php print_r($_SESSION['pratos'])  ?>
+
+</main>
 
 <script src="javascript/geral.js"></script>
 </body>
