@@ -10,9 +10,11 @@
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body>
+
 <header>
     <?php include 'header.php'; ?>
 </header>
+
 <main class="grid-welcome">
         <h1>Fill information about the new food item you want to add</h1>
         <form method="post" action="actions/create-plate.php">
