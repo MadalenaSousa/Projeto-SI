@@ -29,7 +29,7 @@
                     <div class="rest" style="width: 20%;">
                       <img src="" alt="">
                       
-                      <a href="profile-restaurant.php?id='. $restaurante['id'] .'">
+                      <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
                         <h3>'.$restaurante['nome'].'</h3>
                       </a>
                       

@@ -8,5 +8,10 @@ function createRestaurant($username, $nome) {
 }
 
 function getRestaurantByUsername($username) {
-    return pg_fetch_array(pg_query("SELECT id, utilizador_username FROM restaurante WHERE utilizador_username = '$username'"));
+    return pg_fetch_array(pg_query(getDBConnection(), "SELECT id, utilizador_username FROM restaurante WHERE utilizador_username = '$username'"));
 }
+
+function getLastRestaurants($limit){
+    return pg_fetch_all(pg_query( getDBConnection(),"select id, nome, logo_path, utilizador_username from restaurante order by id desc limit '$limit'"));
+}
+
