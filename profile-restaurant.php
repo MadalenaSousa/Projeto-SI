@@ -89,49 +89,6 @@
               </div>';
         }
         ?>
-
-        <!-- DETALHES DO PRATO -->
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <?php
-
-                        if(isset($_POST['detalhe'])) {
-                            $comida = getFoodById($_POST['id']);
-
-                            echo '<h4 class="modal-title">' . $comida['titulo'] . '</h4>
-               
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-                    
-                    <div class="modal-body">
-                        <p>' . $comida['descricao'] . '</p>';
-                        }
-                        ?>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" style="background-color: grey" class="button btn btn-secondary" data-dismiss="modal">Close</button>
-
-                        <form method="post" action="actions/add-cart.php">
-                            <input type="hidden" name="id" value="">
-                            <input type="hidden" name="compra-imediata" value="1">
-                            <input type="button" class="button btn btn-primary" value="Add To Cart">
-                        </form>
-
-                        <form method="post" action="actions/add-cart.php">
-                            <input type="hidden" name="id" value="">
-                            <input type="hidden" name="compra-imediata" value="1">
-                            <input type="submit" class="button btn btn-primary" value="Instant Buy">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
     <script src="javascript/geral.js"></script>
