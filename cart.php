@@ -14,6 +14,10 @@
     <?php
         include 'database-data-functions/comida-data.php';
         include 'database-data-functions/restaurante-data.php';
+
+        for ($i = 0; $i < count($_SESSION['pratos']); $i++) {
+            $comida[$i] = getFoodById($_SESSION['pratos'][]);
+        }
     ?>
 
 
@@ -22,7 +26,8 @@
 </header>
 
 <main>
-    <?php  ?>
+
+    <?php print_r($_SESSION['pratos'])  ?>
 
 </main>
 

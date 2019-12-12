@@ -28,12 +28,12 @@ if(isset($_SESSION['pratos'])){
         "quantity" => 1
     );
     array_push($_SESSION['pratos'], $array);
+
+    print_r($_SESSION['pratos']);
 }
 
 if($_POST['compra-imediata'] == 0){
-    header('Location: ../carrinho.php');
-} else {
-    header('Location: ../dadospagamento.php');
+    header('Location: ../cart.php');
 }
 
 ?>

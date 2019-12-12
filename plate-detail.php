@@ -40,15 +40,15 @@
     ?>
 
     <form method="post" action="actions/add-cart.php">
-        <input type="hidden" name="id" value="">
-        <input type="hidden" name="compra-imediata" value="1">
-        <input type="button" class="button btn btn-primary" value="Add To Cart">
+        <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+        <input type="hidden" name="compra-imediata" value="0">
+        <input type="submit" class="button" value="Add To Cart">
     </form>
 
     <form method="post" action="actions/add-cart.php">
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
         <input type="hidden" name="compra-imediata" value="1">
-        <input type="submit" class="button btn btn-primary" value="Instant Buy">
+        <input type="submit" class="button" value="Instant Buy">
     </form>
 </main>
 
