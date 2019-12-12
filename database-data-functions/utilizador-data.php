@@ -4,11 +4,11 @@ include_once dirname(__FILE__) . '/connection.php';
 
 function createUser($nome, $username, $password, $email, $tipoId) {
     return pg_query(getDBConnection(), "INSERT INTO utilizador (nome, username, password, email, tipo_id) 
-                                             VALUES ('$nome', '$username', '$password', '$email', $tipoId);");
+                                             VALUES ('" . $nome . "', '" . $username . "', '" . $password . "', '" . $email . "','" . $tipoId . "');");
 }
 
 function getUserByUsername($username) {
-    return pg_fetch_array(pg_query(getDBConnection(), "SELECT * FROM utilizador WHERE username = '$username'"));
+    return pg_fetch_array(pg_query(getDBConnection(), "SELECT * FROM utilizador WHERE username = '" . $username . "'"));
 }
 
 function userExists($username, $email){
@@ -35,8 +35,8 @@ function userExists($username, $email){
 function correctData($username, $password) {
     $account = pg_query(getDBConnection(), "SELECT username, nome, utilizador.tipo_id 
                                        FROM utilizador 
-                                       WHERE username = '$username' 
-                                       AND password = '$password'");
+                                       WHERE username = '" . $username . "' 
+                                       AND password = '" . $password . "'");
 
     if (pg_num_rows($account) == 1) {
         return true;

@@ -4,14 +4,18 @@ include_once(dirname(__FILE__) . '/connection.php');
 
 function createRestaurant($username, $nome) {
     return pg_query(getDBConnection(), "INSERT INTO restaurante (nome, utilizador_username) 
-                                             VALUES ('$nome', '$username');");
+                                             VALUES ('" . $nome . "', '" . $username . "');");
 }
 
 function getRestaurantByUsername($username) {
-    return pg_fetch_array(pg_query(getDBConnection(), "SELECT id, utilizador_username FROM restaurante WHERE utilizador_username = '$username'"));
+    return pg_fetch_array(pg_query(getDBConnection(), "SELECT id, utilizador_username FROM restaurante WHERE utilizador_username = '" . $username . "'"));
 }
 
 function getLastRestaurants($limit){
-    return pg_fetch_all(pg_query( getDBConnection(),"select id, nome, logo_path, utilizador_username from restaurante order by id desc limit '$limit'"));
+    return pg_fetch_all(pg_query( getDBConnection(),"SELECT id, nome, logo_path, utilizador_username FROM restaurante ORDER BY id DESC LIMIT '" . $limit . "'"));
+}
+
+function searchRestaurant($input) {
+    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, nome, utilizador_username FROM restaurante WHERE nome LIKE '%" . $input . "%'"));
 }
 
