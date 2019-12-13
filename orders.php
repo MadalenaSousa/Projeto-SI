@@ -15,12 +15,14 @@
     <?php include 'header.php'; ?>
     <?php include 'database-data-functions/comida-data.php'; ?>
 </header>
+<div style="margin-top: 300px">
 <?php
 if (isset($_GET['comida'])) {
     $pratos = PurchasedDishes($_GET['comida']);
     $comida = getFoodById($_GET['id']);
     echo '
-     <p>' . $pratos['comida_id'] . '</p>  
+     <p>' . $pratos['comida_id'] . '</p>
+     <p>' . $pratos['cliente_utilizador_username'] . '</p> 
      <p>' . $comida['titulo'] . '</p>   
          
     ';
@@ -28,6 +30,7 @@ if (isset($_GET['comida'])) {
 }
 
 ?>
+</div>
 <script src="javascript/geral.js"></script>
 </body>
 </html>
