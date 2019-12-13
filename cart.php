@@ -40,6 +40,7 @@
                     <div>' . $comida['quantity'] . '</div>
                     <div>' . $comida['price'] . '</div>
                     <form method="post" action="">
+                        <input type="hidden" value="' . $comida['id'] . '" name="id">
                         <input type="submit" value="X">
                     </form>
                 </div>';
@@ -48,7 +49,7 @@
     ?>
 
     <div class="grid">
-        <form method="post" action="">
+        <form method="post" action="actions/clear-cart.php">
             <input class="button" type="submit" value="Clear Cart">
         </form>
 

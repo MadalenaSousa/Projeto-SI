@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LDMEats | Wallet</title>
+    <title>LDMEats | My Orders</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/icon-logo.png">
@@ -15,10 +15,11 @@
 </header>
 
 <main class="grid-welcome">
-    <div>Your Order was Successfull!</div>
-    <div><?php echo '<pre>'; print_r($_SESSION['pratos']); echo '</pre>';?></div>
-    <form method="post" action="actions/confirm-order.php">
-        <input type="submit" value="Finish Order">
+    <form method="post" action="actions/create-discount.php">
+        <label>Value of discount (percentage): <input type="number" name="valor"></label><br>
+        <label>Number of Clients to offer discount: <input type="number" name="nClientes"></label><br>
+        <label>Discount Lifetime (days): <input type="number" name="days"></label><br>
+        <input class="button" type="submit" value="Create">
     </form>
 </main>
 

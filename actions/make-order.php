@@ -16,14 +16,10 @@ if(!empty($_POST['desconto'])) {
 $data = date("Y.m.d");
 $username = $_SESSION['username'];
 
-$encomenda = createOrder($data, $local, $desconto, 1, $username);
+$encomendaId = createOrder($data, $local, $desconto, 1, $username);
 
 foreach ($_SESSION['pratos'] as $comida) {
-    createOrder_Food($encomenda['id'], $_SESSION['username'], $comida['id']);
+    createOrder_Food($encomendaId, $comida['id'], $comida['quantity']);
 }
 
-print_r($encomenda);
-
-echo '<pre>'; print_r($_SESSION); echo '</pre>';
-
-//header('Location: ../order-result.php');
+header('Location: ../order-result.php');

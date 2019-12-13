@@ -47,10 +47,10 @@ if(isset($_SESSION['pratos'])){
     print_r($_SESSION['pratos']);
 }
 
-/*if($_POST['compra-imediata'] == 0){
+if($_POST['compra-imediata'] == 0){
     header('Location: ../cart.php');
 } else {
     header('Location: ../order-info.php');
-}*/
+}
 
 ?>
