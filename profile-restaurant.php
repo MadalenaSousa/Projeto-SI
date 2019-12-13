@@ -4,13 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LDMEats | Profile</title>
+    <title>LDMEats | Restaurant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -43,9 +38,7 @@
                 <h1><?php echo $user['nome'] ?></h1>
             </div>
             <div>
-                <a href="#">About</a>
                 <a href="#">Discounts</a>
-                <a href="#">Messages</a>
                 <a href="#">Edit Profile</a>
             </div>
         </div>
@@ -67,17 +60,17 @@
                         echo '<form method="post" action="actions/delete-comida.php?username=' . $_GET['username'] . '">
                                 <input type="hidden" name="id" value="' . $value['id'] . '">
                                 <input type="submit" class="button" value="Delete">
-                           </form>
-                           
-                           <form method="post">
+                              </form>
+                               
+                              <form method="post">
                                 <input type="submit" class="button" value="Edit">
-                           </form>';
+                              </form>';
                     }
 
-                    echo '<button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Detalhes
-                        </button>
-                      </div>';
+                        echo '<a href="plate-detail.php?id=' . $value['id'] . '">
+                                <div class="button">Detalhes</div>
+                              </a>
+                            </div>';
                 }
             }
             ?>
@@ -89,36 +82,6 @@
               </div>';
         }
         ?>
-
-        <!-- DETALHES DO PRATO -->
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <?php
-
-                        foreach (getFoodFromRestaurant($_GET['username']) as $prato) {
-                            echo '<h4 class="modal-title">' . $prato['titulo'] . '</h4>
-               
-                            <button type="button" class="close" database-data-functions-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-                    
-                    <div class="modal-body">
-                        <p>' . $prato['descricao'] . '</p>';
-                        }
-                        ?>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" style="background-color: grey" class="button btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="button btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
     <script src="javascript/geral.js"></script>

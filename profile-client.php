@@ -37,12 +37,9 @@
             <h1><?php echo $user['nome'] ?></h1>
         </div>
         <div>
-            <a href="#">About</a>
-            <a href="#">Favorites</a>
             <a href="#">Discounts</a>
-            <a href="#">My Orders</a>
+            <a href="orders.php">My Orders</a>
             <a href="wallet.php?username=<?php echo $_GET['username'] ?>">Wallet</a>
-            <a href="#">Messages</a>
             <a href="#">Edit Profile</a>
         </div>
     </div>

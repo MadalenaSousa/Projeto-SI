@@ -1,10 +1,16 @@
-<?php session_start() ?>
+<?php
+
+if(isset($_SESSION['username'])) {
+    session_start();
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LDMEats | Profile</title>
+    <title>LDMEats | Search Result</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/icon-logo.png">
@@ -15,13 +21,13 @@
 
     <header>
         <?php include 'header.php' ?>
-
     </header>
 
     <main class="grid">
 
             <?php
-            include 'actions/search-filter.php';
+
+            include 'actions/search.php';
 
             if(isset($restaurantes) && !empty($restaurantes)){
                 foreach ($restaurantes as $restaurante) {
@@ -43,7 +49,7 @@
                     <div class="rest" style="">
                       <img src="" alt="">
                       
-                      <a href="profile-plate.php?id=' . $comida['id'] . '"> <!-- Profile plate?? Supostamente é para usar o modal -->
+                      <a href="plate-detail.php?id=' . $comida['id'] . '">
                         <h3>' . $comida['titulo'] . '</h3>
                       </a>
                       
