@@ -16,20 +16,26 @@
     <?php include 'database-data-functions/comida-data.php'; ?>
 </header>
 <div style="margin-top: 300px">
-<?php
-if (isset($_GET['comida'])) {
-    $pratos = PurchasedDishes($_GET['comida']);
-    $comida = getFoodById($_GET['id']);
-    echo '
+
+
+    <?php
+    if (isset($_GET['comida'])) {
+        //ver melhor explicaçao da lena 
+        $pratosCliente = PurchasedDishes($cliente);
+        $clienteComidaInfo=getFoodBYid($pratosCliente[i];
+        echo '
+     <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
      <p>' . $pratos['comida_id'] . '</p>
      <p>' . $pratos['cliente_utilizador_username'] . '</p> 
      <p>' . $comida['titulo'] . '</p>   
-         
+      
     ';
 
-}
+    }
 
-?>
+    ?>
+
+    </main>
 </div>
 <script src="javascript/geral.js"></script>
 </body>

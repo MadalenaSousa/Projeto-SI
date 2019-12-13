@@ -28,7 +28,7 @@ function searchFood($input) {
 }
 
 function PurchasedDishes($comida){
-    return pg_fetch_all(getDBConnection(),"select * from encomenda_comida ec, encomenda e where (ec.comida_id=e.id)= '" . $comida . "'");
+    return pg_fetch_all(getDBConnection(),"select encomenda_comida.comida_id from encomenda_comida,encomenda where encomenda.cliente_utilizador_username ='" . $comida . "' and encomenda_comida.encomenda_id=encomenda.id");
 
 
 
