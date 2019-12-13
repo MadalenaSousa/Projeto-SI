@@ -16,6 +16,7 @@
     <div class="empty"></div>
 
     <div class="icon">
+
         <form method="get" action="search-results.php">
             <input class="search" type="search" name="search" placeholder="Search">
             <input type="submit" class="button" value="Search">

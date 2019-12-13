@@ -28,7 +28,7 @@
         foreach ($ultimosrestaurantes as $restaurante) {
             echo '
             <div class="rest" style="">
-              <img src="" alt="">
+              <img src="'.$restaurante['logo_path'].'" alt="">
               
               <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
                 <h3>'.$restaurante['nome'].'</h3>

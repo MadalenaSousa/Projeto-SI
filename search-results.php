@@ -27,7 +27,7 @@ if(isset($_SESSION['username'])) {
 
             <?php
 
-            include 'actions/search.php';
+            include 'actions/search-filter.php';
 
             if(isset($restaurantes) && !empty($restaurantes)){
                 foreach ($restaurantes as $restaurante) {
