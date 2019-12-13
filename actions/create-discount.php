@@ -1,14 +1,30 @@
 <?php
 
+session_start();
+
+include dirname(__FILE__) . '/../database-data-functions/restaurante-data.php';
 include dirname(__FILE__) . '/../database-data-functions/desconto-data.php';
 
 $valor = $_POST['valor'];
-$lifetime = $_POST['lifetime'];
+$lifetime = $_POST['days'];
 $nClientes = $_POST['nClientes'];
 $restauranteId = $_SESSION['restauranteId'];
 
-createDiscount($valor, $restauranteId, $lifetime);
+$totalGastoPorCliente = getClientsAndSpendingsByRestaurant($restauranteId);
 
-//correr users que
+echo '<pre>'; print_r($totalGastoPorCliente); echo '</pre>';
 
-createDiscount_Client(discountid, $);
+$clientesComDesconto = array();
+
+for($i = 0; $i < count($totalGastoPorCliente); $i++) {
+    if($i < $nClientes) {
+        array_push($clientesComDesconto, $totalGastoPorCliente[$i]['cliente']);
+    }
+}
+
+foreach ($clientesComDesconto as $cliente) {
+    $descontoId = createDiscount($valor, $restauranteId, $lifetime);
+    createDiscount_Client($descontoId, $cliente, FALSE);
+}
+
+header('Location: ../discounts.php?username=' . $_SESSION['username']);

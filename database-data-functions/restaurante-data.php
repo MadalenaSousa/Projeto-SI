@@ -19,3 +19,14 @@ function searchRestaurant($input) {
     return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, nome, utilizador_username FROM restaurante WHERE nome LIKE '%" . $input . "%'"));
 }
 
+function getClientsAndSpendingsByRestaurant($restauranteId) {
+    return pg_fetch_all(pg_query(getDBConnection(), "SELECT cliente, SUM(total) AS soma FROM 
+                                                          (SELECT comida.preco * encomenda_comida.quantidade AS total, encomenda.cliente_utilizador_username AS cliente 
+                                                          FROM comida, encomenda_comida, encomenda
+                                                          WHERE encomenda.id = encomenda_comida.encomenda_id
+                                                          AND encomenda_comida.comida_id = comida.id
+                                                          AND comida.restaurante_id = '" . $restauranteId . "') AS dados
+                                                          GROUP BY cliente
+                                                          ORDER BY soma DESC"));
+}
+

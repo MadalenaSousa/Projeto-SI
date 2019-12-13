@@ -14,7 +14,31 @@
     <?php include 'header.php'; ?>
 </header>
 
+<?php
+
+include 'database-data-functions/desconto-data.php';
+include 'database-data-functions/restaurante-data.php';
+
+$restaurante = getRestaurantByUsername($_GET['username']);
+$descontosRestaurante = getDiscountByRestaurant($restaurante['id']);
+
+?>
+
 <main class="grid-welcome">
+
+    <?php
+
+    if(!empty($descontosRestaurante)) {
+        foreach ($descontosRestaurante as $desconto) {
+            echo '<div>
+                      <div>Desconto: ' . $desconto['id'] . '</div>';
+            echo '    <div>Valor: ' . $desconto['valor_desconto'] . '%</div>
+                  </div>';
+        }
+    }
+
+    ?>
+
     <form method="post" action="actions/create-discount.php">
         <label>Value of discount (percentage): <input type="number" name="valor"></label><br>
         <label>Number of Clients to offer discount: <input type="number" name="nClientes"></label><br>
