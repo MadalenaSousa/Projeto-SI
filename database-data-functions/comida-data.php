@@ -24,5 +24,13 @@ function deleteComida($comidaId) {
 }
 
 function searchFood($input) {
-    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, titulo FROM comida WHERE titulo LIKE '%" . $input . "%'"));
+    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, titulo,preco,restaurante_id FROM comida WHERE titulo  ILIKE '%" . $input . "%' order by titulo asc, preco  asc;"));
 }
+
+function PurchasedDishes($comida){
+    return pg_fetch_all(getDBConnection(),"select * from encomenda_comida where encomenda_comida.comida_id= '" . $comida . "'");
+
+
+
+}
+

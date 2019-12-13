@@ -16,6 +16,10 @@ function getLastRestaurants($limit){
 }
 
 function searchRestaurant($input) {
-    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, nome, utilizador_username FROM restaurante WHERE nome LIKE '%" . $input . "%'"));
+    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, nome, utilizador_username,logo_path FROM restaurante WHERE nome ILIKE '%" . $input . "%'"));
+}
+function getRestouranteById($id){
+    return pg_fetch_array(pg_query(getDBConnection(), "SELECT * FROM restaurante WHERE restaurante.nome= '" . $id . "'"));
+
 }
 

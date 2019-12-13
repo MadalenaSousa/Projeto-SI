@@ -11,9 +11,23 @@
 </head>
 <body>
 <header>
-    <?php include 'header.php'; ?>
-</header>
 
+    <?php include 'header.php'; ?>
+    <?php include 'database-data-functions/comida-data.php'; ?>
+</header>
+<?php
+if (isset($_GET['comida'])) {
+    $pratos = PurchasedDishes($_GET['comida']);
+    $comida = getFoodById($_GET['id']);
+    echo '
+     <p>' . $pratos['comida_id'] . '</p>  
+     <p>' . $comida['titulo'] . '</p>   
+         
+    ';
+
+}
+
+?>
 <script src="javascript/geral.js"></script>
 </body>
 </html>
