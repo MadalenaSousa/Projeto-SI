@@ -21,7 +21,7 @@
     <main class="grid">
 
             <?php
-            include 'actions/pesquisa-filtrar.php';
+            include 'actions/search-filter.php';
 
             if(isset($restaurantes) && !empty($restaurantes)){
                 foreach ($restaurantes as $restaurante) {
