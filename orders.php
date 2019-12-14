@@ -17,21 +17,20 @@
 </header>
 <div style="margin-top: 300px">
 
-
     <?php
-    if (isset($_GET['comida'])) {
-        //ver melhor explicaçao da lena 
-        $pratosCliente = PurchasedDishes($cliente);
-        $clienteComidaInfo=getFoodBYid($pratosCliente[i];
-        echo '
-     <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
-     <p>' . $pratos['comida_id'] . '</p>
-     <p>' . $pratos['cliente_utilizador_username'] . '</p> 
-     <p>' . $comida['titulo'] . '</p>   
-      
-    ';
 
+    $pratosCliente = purchasedDishes($_SESSION['username']);
+
+    foreach ($pratosCliente as $item) {
+
+        echo '
+             <a href="orders.php?username=' . $_SESSION['username'] . '">
+             <p>' . $item['data_encomenda'] . '</p>
+             <p>' . $item['titulo'] . '</p> 
+              
+            ';
     }
+
 
     ?>
 

@@ -9,11 +9,24 @@
 </head>
 <body>
 
-    <header>
-        <?php include 'header.php'; ?>
-    </header>
+<header>
+    <?php include 'header.php'; ?>
+</header>
 
+<form method="post" action="actions/.php">
+    New nome:<br>
+    <input type="text" name="" value="new name"><br>
+    New username:<br>
+    <input type="text" name="" value="new username"><br><br>
+    New password:<br>
+    <input type="text" name="" value="new password"><br><br>
+    New email:<br>
+    <input type="email" name="" value="new email"><br><br>
+    New foto:<br>
+    <input type="file" name="" value="new username"><br><br>
 
+    <input type="submit" value="Submit Changes">
+</form>
 
 
 <script src="javascript/geral.js"></script>
