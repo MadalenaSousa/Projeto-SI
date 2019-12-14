@@ -10,3 +10,7 @@ function createClient($username, $saldo) {
 function getClientByUsername($username) {
     return pg_fetch_array(pg_query(getDBConnection(), "SELECT * FROM cliente WHERE utilizador_username = '" . $username . "'"));
 }
+
+function updateBudget($username, $newSaldo) {
+    return pg_query(getDBConnection(), "UPDATE cliente SET saldo = '" . $newSaldo . "' WHERE cliente.utilizador_username = '" . $username . "'");
+}

@@ -39,8 +39,8 @@ function purchasedDishes($user){
                                                          WHERE e.cliente_utilizador_username ='" . $user . "'
                                                          AND ec.encomenda_id=e.id
                                                          AND ec.comida_id = c.id"));
-
-
-
 }
 
+function markFoodAsBought($comidaId) {
+    return pg_query(getDBConnection(), "UPDATE comida SET comprado  = true WHERE comida.id = '" . $comidaId . "'");
+}
