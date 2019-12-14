@@ -24,7 +24,7 @@
 <main class="grid-welcome">
     <?php
 
-    if ($_SESSION['tipo'] != 'admin' && isset($_GET['id'])) {
+    if ($_SESSION['tipo'] == 1 && isset($_GET['id'])) {
 
         $comida = getFoodById($_GET['id']);
 
