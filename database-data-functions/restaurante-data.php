@@ -16,7 +16,9 @@ function getLastRestaurants($limit){
 }
 
 function searchRestaurant($input) {
-    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, nome, utilizador_username,logo_path FROM restaurante WHERE nome ILIKE '%" . $input . "%'"));
+    return pg_fetch_all(pg_query(getDBConnection(), "SELECT restaurante.id, restaurante.nome, restaurante.utilizador_username,restaurante.logo_path,comida.titulo
+                                                            FROM restaurante,comida 
+                                                            WHERE nome ILIKE '%" . $input . "%'"));
 }
 function getRestaurantById($id){
     return pg_fetch_array(pg_query(getDBConnection(), "SELECT * FROM restaurante WHERE restaurante.id= '" . $id . "'"));
@@ -32,4 +34,9 @@ function getClientsAndSpendingsByRestaurant($restauranteId) {
                                                           GROUP BY cliente
                                                           ORDER BY soma DESC"));
 }
+
+function getAllRestaurants(){
+    return pg_fetch_all(pg_query( getDBConnection(),"SELECT id, nome, logo_path, utilizador_username FROM restaurante"));
+}
+
 
