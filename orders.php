@@ -11,9 +11,31 @@
 </head>
 <body>
 <header>
-    <?php include 'header.php'; ?>
-</header>
 
+    <?php include 'header.php'; ?>
+    <?php include 'database-data-functions/comida-data.php'; ?>
+</header>
+<div style="margin-top: 300px">
+
+    <?php
+
+    $pratosCliente = purchasedDishes($_SESSION['username']);
+
+    foreach ($pratosCliente as $item) {
+
+        echo '
+             <a href="orders.php?username=' . $_SESSION['username'] . '">
+             <p>' . $item['data_encomenda'] . '</p>
+             <p>' . $item['titulo'] . '</p> 
+              
+            ';
+    }
+
+
+    ?>
+
+    </main>
+</div>
 <script src="javascript/geral.js"></script>
 </body>
 </html>

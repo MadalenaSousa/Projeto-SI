@@ -16,20 +16,21 @@
     <?php include('header.php'); ?>
 </header>
 
-    <?php include 'database-data-functions/comida-data.php'; ?>
-
+<?php include 'database-data-functions/comida-data.php'; ?>
+<?php include 'database-data-functions/restaurante-data.php'; ?>
 <main class="grid-welcome">
     <?php
 
-    if(isset($_GET['id'])) {
-
+    if (isset($_GET['id'])) {
         $comida = getFoodById($_GET['id']);
+        $restaurante=getRestouranteById($_GET['id']);
 
         echo '<h4 class="modal-title">' . $comida['titulo'] . '</h4>
-              <p>' . $comida['descricao'] . '</p>';
+              <p>' . $comida['descricao'] . '</p> <p>' . $comida['preco'] . '</p> <p>' . $comida['restaurante_id'] . '</p>
+              <p>'.$restaurante['nome'].'</p>';
+
     }
     ?>
-
     <form method="post" action="actions/add-cart.php">
         <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
         <input type="hidden" name="compra-imediata" value="0">
@@ -41,6 +42,17 @@
         <input type="hidden" name="compra-imediata" value="1">
         <input type="submit" class="button" value="Instant Buy">
     </form>
+    <?php
+    if ($_SESSION['tipo'] != 'admin' ) {
+        echo '
+        <form method="get" action="edit-plate.php">
+            <input type="submit" class="button" value="Edit Plate">
+            <input type="hidden" name="id" value="'.$_GET['id'].'">
+
+        </form>
+        ';
+    }
+    ?>
 </main>
 
 <script src="javascript/geral.js"></script>

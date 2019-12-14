@@ -37,6 +37,7 @@ if(isset($_SESSION['username'])) {
                       
                       <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
                         <h3>'.$restaurante['nome'].'</h3>
+                         <h3>'.$restaurante['logo_path'].'</h3>
                       </a>
                       
                       <p>'.$restaurante['id'].'</p>     
@@ -50,10 +51,12 @@ if(isset($_SESSION['username'])) {
                       <img src="" alt="">
                       
                       <a href="plate-detail.php?id=' . $comida['id'] . '">
-                        <h3>' . $comida['titulo'] . '</h3>
-                      </a>
                       
-                      <p>' . $comida['id'] . '</p>     
+                        <h3>' . $comida['titulo'] . '</h3>
+                         <h3>' . $comida['preco'] . '</h3>
+                      
+                      </a>
+                    
                     </div>';
                 }
             }
