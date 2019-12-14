@@ -1,6 +1,7 @@
 <?php
 
 include dirname(__FILE__) . '/../database-data-functions/utilizador-data.php';
+include dirname(__FILE__) . '/../database-data-functions/restaurante-data.php';
 
 if(isset($_SESSION['username'])) {
 

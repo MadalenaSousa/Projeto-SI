@@ -34,9 +34,9 @@ function userExists($username, $email){
 
 function correctData($username, $password) {
     $account = pg_query(getDBConnection(), "SELECT username, nome, utilizador.tipo_id 
-                                       FROM utilizador 
-                                       WHERE username = '" . $username . "' 
-                                       AND password = '" . $password . "'");
+                                                  FROM utilizador 
+                                                  WHERE username = '" . $username . "' 
+                                                  AND password = '" . $password . "'");
 
     if (pg_num_rows($account) == 1) {
         return true;

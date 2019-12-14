@@ -2,6 +2,10 @@
 
 session_start();
 
+include dirname(__FILE__) . '/../database-data-functions/comida-data.php';
+
+$comida = getFoodById($_POST['id']);
+
 if(isset($_SESSION['pratos'])){
     $i = 0;
 
@@ -17,16 +21,27 @@ if(isset($_SESSION['pratos'])){
     if($i == count($_SESSION['pratos'])){
         $array = array(
             "id" => $_POST['id'],
-            "quantity" => 1
+            "quantity" => 1,
+            "title" => $comida['titulo'],
+            "description" => $comida['descricao'],
+            "price" => $comida['preco'],
+            "restaurantId" => $comida['restaurante_id']
         );
         array_push($_SESSION['pratos'], $array);
     }
+
+    print_r($_SESSION['pratos']);
+
 } else {
     $_SESSION['pratos'] = array();
     $array = array(
         "id" => $_POST['id'],
-        "quantity" => 1
-    );
+        "quantity" => 1,
+        "title" => $comida['titulo'],
+        "description" => $comida['descricao'],
+        "price" => $comida['preco'],
+        "restaurantId" => $comida['restaurante_id']
+     );
     array_push($_SESSION['pratos'], $array);
 
     print_r($_SESSION['pratos']);
@@ -34,6 +49,8 @@ if(isset($_SESSION['pratos'])){
 
 if($_POST['compra-imediata'] == 0){
     header('Location: ../cart.php');
+} else {
+    header('Location: ../order-info.php');
 }
 
 ?>

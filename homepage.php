@@ -23,7 +23,7 @@
     <main class="grid">
 
         <?php
-        $ultimosrestaurantes=getLastRestaurants(4);
+        $ultimosrestaurantes = getLastRestaurants(4);
 
         foreach ($ultimosrestaurantes as $restaurante) {
             echo '

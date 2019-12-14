@@ -14,10 +14,6 @@
     <?php
         include 'database-data-functions/comida-data.php';
         include 'database-data-functions/restaurante-data.php';
-
-        for ($i = 0; $i < count($_SESSION['pratos']); $i++) {
-            $comida[$i] = getFoodById($_SESSION['pratos'][]);
-        }
     ?>
 
 
@@ -25,9 +21,42 @@
     <?php include 'header.php'; ?>
 </header>
 
-<main>
+<main class="grid-welcome">
 
-    <?php print_r($_SESSION['pratos'])  ?>
+    <div class="grid">
+        <div><h2>Nome do Prato</h2></div>
+        <div><h2>Quantidade</h2></div>
+        <div><h2>Preço</h2></div>
+        <div><h2>Eliminar</h2></div>
+    </div>
+
+    <?php
+
+    if(isset($_SESSION['pratos'])) {
+        foreach($_SESSION['pratos'] as $comida) {
+            echo '
+                <div class="grid">
+                    <div>' . $comida['title'] . '</div>
+                    <div>' . $comida['quantity'] . '</div>
+                    <div>' . $comida['price'] . '</div>
+                    <form method="post" action="">
+                        <input type="hidden" value="' . $comida['id'] . '" name="id">
+                        <input type="submit" value="X">
+                    </form>
+                </div>';
+        }
+    }
+    ?>
+
+    <div class="grid">
+        <form method="post" action="actions/clear-cart.php">
+            <input class="button" type="submit" value="Clear Cart">
+        </form>
+
+        <a href="order-info.php">
+            <button class="button">Checkout</button>
+        </a>
+    </div>
 
 </main>
 

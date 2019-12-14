@@ -1,6 +1,7 @@
 <?php
 
 include dirname(__FILE__) . '/../database-data-functions/utilizador-data.php';
+include dirname(__FILE__) . '/../database-data-functions/cliente-data.php';
 
 if(isset($_SESSION['username'])) {
 
@@ -18,7 +19,7 @@ if(isset($_SESSION['username'])) {
         header('Location: ../signup.php');
     } else {
         createUser($nome, $username, $password, $email, 2) or die;
-        createClient($saldo, $username) or die;
+        createClient($username, $saldo) or die;
 
         session_start();
 
