@@ -9,8 +9,8 @@ function createComida($name, $description, $price, $restaurantId) {
 
 function updateComida($id, $titulo, $description, $price) {
     return pg_query(getDBConnection(), "UPDATE comida 
-                                              SET titulo = '".$titulo." ', descricao = '".$description." ', preco = ".$price." 
-                                              WHERE  id = ".$id." ");
+                                             SET titulo = '".$titulo." ', descricao = '".$description." ', preco = ".$price." 
+                                             WHERE  id = ".$id." ");
 }
 
 function getFoodFromRestaurant($restaurantUsername) {
@@ -30,16 +30,15 @@ function deleteComida($comidaId) {
 }
 
 function searchFood($input) {
-    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, titulo,preco,restaurante_id FROM comida WHERE titulo  ILIKE '%" . $input . "%' order by titulo asc, preco  asc;"));
+    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, titulo,preco,restaurante_id FROM comida WHERE titulo  ILIKE '%" . $input . "%' ORDER BY titulo ASC, preco  ASC;"));
 }
 
 function purchasedDishes($user){
-    return pg_fetch_all(pg_query(getDBConnection(),"
-            select c.titulo,e.data_encomenda 
-            from encomenda_comida ec,encomenda e, comida c
-            where e.cliente_utilizador_username ='" . $user . "'
-                and ec.encomenda_id=e.id
-                and ec.comida_id = c.id"));
+    return pg_fetch_all(pg_query(getDBConnection(),"SELECT c.titulo,e.data_encomenda 
+                                                         FROM encomenda_comida ec,encomenda e, comida c
+                                                         WHERE e.cliente_utilizador_username ='" . $user . "'
+                                                         AND ec.encomenda_id=e.id
+                                                         AND ec.comida_id = c.id"));
 
 
 

@@ -62,9 +62,9 @@
                                 <input type="submit" class="button" value="Delete">
                               </form>
                                
-                              <form method="post">
-                                <input type="submit" class="button" value="Edit">
-                              </form>';
+                              <a href="edit-plate.php?id=' . $value['id'] . '">
+                                <div class="button">Edit</div>
+                              </a>';
                     }
 
                         echo '<a href="plate-detail.php?id=' . $value['id'] . '">
