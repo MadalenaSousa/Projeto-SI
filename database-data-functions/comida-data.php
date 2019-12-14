@@ -39,8 +39,9 @@ function purchasedDishes($user){
                                                          WHERE e.cliente_utilizador_username ='" . $user . "'
                                                          AND ec.encomenda_id=e.id
                                                          AND ec.comida_id = c.id"));
-
-
-
 }
 
+function filter($limit){
+    return pg_fetch_all(pg_query(getDBConnection(), "Select preco from comida  limit '" . $limit . "'"));
+
+}

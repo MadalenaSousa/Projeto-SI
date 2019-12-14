@@ -19,26 +19,52 @@
     </header>
 
     <?php include 'database-data-functions/restaurante-data.php' ?>
-
-    <main class="grid">
+    <h1>Ultimos restaurante a serem adicionados:</h1>
+    <div class="grid">
 
         <?php
         $ultimosrestaurantes = getLastRestaurants(4);
 
         foreach ($ultimosrestaurantes as $restaurante) {
             echo '
+           <div class="grid">
             <div class="rest" style="">
-              <img src="'.$restaurante['logo_path'].'" alt="">
+              <img src="' . $restaurante['logo_path'] . '" alt="">
               
-              <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
-                <h3>'.$restaurante['nome'].'</h3>
+              <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
+                <h3>' . $restaurante['nome'] . '</h3>
               </a>
               
-              <p>'.$restaurante['id'].'</p>     
+              <p>' . $restaurante['id'] . '</p>     
+            </div>
+            
+              </div>
+            ';
+        } ?>
+    </div>
+        <h1>Todos os restaurantes:</h1>
+    <div class="grid">
+        <?php
+
+        $restaurantes = getAllRestaurants();
+
+        foreach ($restaurantes as $restaurante) {
+            echo '
+
+            <div class="rest" style="">
+              <img src="' . $restaurante['logo_path'] . '" alt="">
+              
+              <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
+                <h3>' . $restaurante['nome'] . '</h3>
+                  
+              </a>
+              
+            
             </div>';
+
         }
         ?>
-    </main>
+    </div>
 
     <script src="javascript/geral.js"></script>
 </body>

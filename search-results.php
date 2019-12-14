@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_SESSION['username'])) {
+if (isset($_SESSION['username'])) {
     session_start();
 }
 
@@ -21,32 +21,38 @@ if(isset($_SESSION['username'])) {
 
     <header>
         <?php include 'header.php' ?>
+
     </header>
 
     <main class="grid">
 
-            <?php
+        <?php
 
-            include 'actions/search-filter.php';
+        include 'actions/search-filter.php';
 
-            if(isset($restaurantes) && !empty($restaurantes)){
-                foreach ($restaurantes as $restaurante) {
-                    echo '
-                    <div class="rest" style="width: 20%;">
+        if (isset($restaurantes) && !empty($restaurantes)) {
+            foreach ($restaurantes as $restaurante) {
+                echo '
+                    <div class="rest" style="width: 50%;">
                       <img src="" alt="">
                       
-                      <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
-                        <h3>'.$restaurante['nome'].'</h3>
-                         <h3>'.$restaurante['logo_path'].'</h3>
+                      <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
+                        
+                        <h3>' . $restaurante['nome'] . '</h3>
+                         <h3>' . $restaurante['logo_path'] . '</h3>
+                     
                       </a>
-                      
-                      <p>'.$restaurante['id'].'</p>     
+                           <a href="plate-detail.php?id=' . $restaurante['utilizador_username'] . '">
+                           <p>' . $restaurante['titulo'] . '</p>  
+                           </a>
+                      <p>' . $restaurante['id'] . '</p>   
+                                    
                     </div>';
-                }
             }
-            if(isset($comidas) && !empty($comidas)) {
-                foreach ($comidas as $comida) {
-                    echo '
+        }
+        if (isset($comidas) && !empty($comidas)) {
+            foreach ($comidas as $comida) {
+                echo '
                     <div class="rest" style="">
                       <img src="" alt="">
                       
@@ -58,12 +64,32 @@ if(isset($_SESSION['username'])) {
                       </a>
                     
                     </div>';
-                }
+
             }
-            ?>
+        }
+
+
+        ?>
+
+        <?php
+        if (isset($_POST['button'])) {
+
+            $filtro = filter(['limit']);
+        } ?>
+        <form method="post">
+            <label>Preço: <input type="number" name="preco" value="<?php echo $filtro['preco'] ?>"></label><br>
+            <input type="submit" class="button" value="Aplicar filtro">
+        </form>
+        <?php
+        ?>
+
+
     </main>
 </div>
+<footer>
 
+
+</footer>
 <script src="javascript/geral.js"></script>
 </body>
 </html>
