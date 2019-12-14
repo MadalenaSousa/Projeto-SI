@@ -37,7 +37,7 @@
             <h1><?php echo $user['nome'] ?></h1>
         </div>
         <div>
-            <a href="#">Discounts</a>
+            <a href="discounts-client.php?username=<?php echo $_GET['username'] ?>">Discounts</a>
             <a href="orders.php?username=<?php echo $_GET['username'] ?>">My Orders</a>
             <a href="wallet.php?username=<?php echo $_GET['username'] ?>">Wallet</a>
         </div>

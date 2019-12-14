@@ -4,24 +4,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LDMEats | Create Plate</title>
+    <title>LDMEats | My Discounts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/icon-logo.png">
 </head>
 <body>
-
 <header>
     <?php include 'header.php'; ?>
 </header>
 
+<?php
+
+include 'database-data-functions/desconto-data.php';
+
+$desconto = getDiscountByClient($_GET['username'])
+
+?>
+
 <main class="grid-welcome">
-    <h1>Fill information about your order</h1>
-    <form method="post" action="actions/make-order.php">
-        <label><input placeholder="Local de Entrega" type="text" name="local" required></label><br>
-        <br>
-        <input type="submit" class="button" value="Finish Order">
-    </form>
+
+    <div><?php echo '<pre>' . print_r($desconto) . '</pre>'; ?></div>
+
 </main>
 
 <script src="javascript/geral.js"></script>

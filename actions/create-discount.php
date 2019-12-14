@@ -28,4 +28,4 @@ foreach ($clientesComDesconto as $cliente) {
     createDiscount_Client($descontoId, $cliente, FALSE);
 }
 
-header('Location: ../discounts.php?username=' . $_SESSION['username']);
+header('Location: ../discounts-restaurant.php?username=' . $_SESSION['username']);

@@ -31,7 +31,7 @@ function getDiscountByRestaurant($restaurantId) {
 
 function getDiscountByClientAndRestaurant($cliente, $restaurantId) {
     return pg_fetch_all(pg_query(getDBConnection(),
-         "SELECT desconto.valor_desconto 
+         "SELECT desconto.valor_desconto, desconto.id 
                FROM desconto, cliente_desconto 
                WHERE cliente_desconto.cliente_utilizador_username = '" . $cliente . "'
                AND desconto.restaurante_id = '" . $restaurantId . "'
@@ -39,4 +39,21 @@ function getDiscountByClientAndRestaurant($cliente, $restaurantId) {
                AND desconto.id = cliente_desconto.desconto_id
                AND desconto.validade > CURRENT_DATE
                ORDER BY desconto.validade ASC"));
+}
+
+function getDiscountByClient($username) {
+    return pg_fetch_all(pg_query(getDBConnection(),
+        "SELECT * 
+              FROM desconto, cliente_desconto, cliente
+              WHERE desconto.id = cliente_desconto.desconto_id
+              AND cliente_desconto.cliente_utilizador_username = cliente.utilizador_username
+              AND cliente.utilizador_username = '" . $username . "'"));
+}
+
+function setDiscountAsUsed($username, $discountId){
+    return pg_query(getDBConnection(),
+        "UPDATE cliente_desconto 
+              SET usado = true
+              WHERE cliente_desconto.cliente_utilizador_username = '" . $username . "'
+              AND cliente_desconto.desconto_id = '" . $discountId . "'") or die;
 }
