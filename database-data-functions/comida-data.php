@@ -43,6 +43,10 @@ function searchFood($foodName, $column, $order) {
     return pg_fetch_all(pg_query(getDBConnection(), $query));
 }
 
+function markFoodAsBought($comidaId) {
+    return pg_query(getDBConnection(), "UPDATE comida SET comprado  = true WHERE comida.id = '" . $comidaId . "'");
+}
+
 function searchFoodByRestaurant($restaurantId, $column, $order) {
 
     $query = "SELECT comida.id, comida.titulo, comida.descricao, comida.preco

@@ -20,8 +20,6 @@
     <form method="post" action="actions/make-order.php">
         <label><input placeholder="Local de Entrega" type="text" name="local" required></label><br>
         <br>
-        <label><input placeholder="Desconto" type="text" name="desconto"></label><br>
-        <br>
         <input type="submit" class="button" value="Finish Order">
     </form>
 </main>

@@ -22,9 +22,10 @@ for($i = 0; $i < count($totalGastoPorCliente); $i++) {
     }
 }
 
+$descontoId = createDiscount($valor, $restauranteId, $lifetime);
+
 foreach ($clientesComDesconto as $cliente) {
-    $descontoId = createDiscount($valor, $restauranteId, $lifetime);
     createDiscount_Client($descontoId, $cliente, FALSE);
 }
 
-header('Location: ../discounts.php?username=' . $_SESSION['username']);
+header('Location: ../discounts-restaurant.php?username=' . $_SESSION['username']);
