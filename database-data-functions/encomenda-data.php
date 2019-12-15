@@ -33,3 +33,10 @@ function getOrderFoodByOrderId($id) {
               AND encomenda.id = '" . $id . "'
               AND comida.id = encomenda_comida.comida_id"));
 }
+
+function getOrdersByClient($username) {
+    return pg_fetch_all(pg_query(getDBConnection(),
+                                    "SELECT encomenda.id, encomenda.data_encomenda
+                                          FROM encomenda
+                                          WHERE encomenda.cliente_utilizador_username = '" . $username . "'"));
+}

@@ -14,7 +14,12 @@
     <?php include 'header.php'; ?>
 </header>
 
-<?php include 'database-data-functions/comida-data.php'; ?>
+<?php
+
+include 'database-data-functions/comida-data.php';
+include 'database-data-functions/encomenda-data.php';
+
+?>
 
 <main class="grid-welcome">
     <h1>My Orders</h1>
@@ -24,10 +29,13 @@
     $pratosCliente = purchasedDishes($_GET['username']);
 
     foreach ($pratosCliente as $item) {
-        echo '<span>
-                Prato: ' . $item['titulo'] . '
-                Data: ' . $item['data_encomenda'] . '
-              </span>';
+        echo '<div>
+                  Order Id:' . $item['id'] .
+                  '<span>
+                    Plate: ' . $item['titulo'] . '
+                    Order Date: ' . $item['data_encomenda'] . '
+                  </span>
+              </div>';
     }
 
     ?>

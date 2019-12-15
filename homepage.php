@@ -18,27 +18,56 @@
         <?php include 'header.php' ?>
     </header>
 
-    <?php include 'database-data-functions/restaurante-data.php' ?>
+    <?php
 
-    <main class="grid">
+    include 'database-data-functions/restaurante-data.php';
+    include 'database-data-functions/comida-data.php'
+
+    ?>
+
+    <h2>New Restaurants:</h2>
+    <div class="grid">
 
         <?php
+
         $ultimosrestaurantes = getLastRestaurants(4);
 
         foreach ($ultimosrestaurantes as $restaurante) {
             echo '
+           <div class="grid">
+                <div class="rest" style="">
+                      <img src="' . $restaurante['logo_path'] . '" alt="">
+                      
+                      <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
+                        <h4>' . $restaurante['nome'] . '</h4>
+                      </a>     
+                </div>
+           </div>';
+        } ?>
+    </div>
+
+    <h2>All our Plates</h2>
+    <div class="grid">
+        <?php
+
+        $pratos = getAllFood();
+
+        foreach ($pratos as $comida) {
+            echo '
+
             <div class="rest" style="">
-              <img src="'.$restaurante['logo_path'].'" alt="">
+              <img src="' . $comida['foto_path'] . '" alt="">
               
-              <a href="profile-restaurant.php?username='. $restaurante['utilizador_username'] .'">
-                <h3>'.$restaurante['nome'].'</h3>
+              <a href="plate-detail.php?id=' . $comida['id'] . '">
+                <h4>' . $comida['titulo'] . '</h4>                  
               </a>
               
-              <p>'.$restaurante['id'].'</p>     
+              <span>' . getRestaurantById($comida['restaurante_id'])['nome'] . '</span>
+            
             </div>';
         }
         ?>
-    </main>
+    </div>
 
     <script src="javascript/geral.js"></script>
 </body>
