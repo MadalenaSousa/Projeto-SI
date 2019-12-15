@@ -26,16 +26,22 @@ include 'database-data-functions/encomenda-data.php';
 
     <?php
 
-    $pratosCliente = purchasedDishes($_GET['username']);
+    $encomendas = getOrdersByClient($_GET['username']);
 
-    foreach ($pratosCliente as $item) {
+    foreach ($encomendas as $order) {
         echo '<div>
-                  Order Id:' . $item['id'] .
-                  '<span>
-                    Plate: ' . $item['titulo'] . '
-                    Order Date: ' . $item['data_encomenda'] . '
-                  </span>
-              </div>';
+                  Order Id:' . $order['id'] . '
+                  Order Date: ' . $order['data_encomenda'];
+        echo '</div>';
+
+              $pratos = getOrderFoodByOrderId($order['id']);
+
+              foreach ($pratos as $item) {
+
+                echo '<span>
+                            Plate: ' . $item['titulo'] . '
+                      </span>';
+            };
     }
 
     ?>

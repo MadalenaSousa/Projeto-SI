@@ -17,6 +17,7 @@
 <?php
 
 include 'database-data-functions/desconto-data.php';
+include 'database-data-functions/restaurante-data.php';
 
 $desconto = getDiscountByClient($_GET['username'])
 
@@ -24,7 +25,16 @@ $desconto = getDiscountByClient($_GET['username'])
 
 <main class="grid-welcome">
 
-    <div><?php echo '<pre>' . print_r($desconto) . '</pre>'; ?></div>
+    <?php
+
+    foreach ($desconto as $desc)
+
+        echo '<span>Value: ' . $desc['valor_desconto'] . '%</span>';
+        echo '<span>Expiration Date: ' . $desc['validade'] . '</span>';
+        echo '<span>Used: ' . $desc['usado'] . '</span>';
+        echo '<span>Restaurant: ' . getRestaurantById($desc['restaurante_id'])['nome'] . '</span>';
+
+    ?>
 
 </main>
 
