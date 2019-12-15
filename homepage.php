@@ -18,50 +18,53 @@
         <?php include 'header.php' ?>
     </header>
 
-    <?php include 'database-data-functions/restaurante-data.php' ?>
-    <h1>Ultimos restaurante a serem adicionados:</h1>
+    <?php
+
+    include 'database-data-functions/restaurante-data.php';
+    include 'database-data-functions/comida-data.php'
+
+    ?>
+
+    <h2>New Restaurants:</h2>
     <div class="grid">
 
         <?php
+
         $ultimosrestaurantes = getLastRestaurants(4);
 
         foreach ($ultimosrestaurantes as $restaurante) {
             echo '
            <div class="grid">
-            <div class="rest" style="">
-              <img src="' . $restaurante['logo_path'] . '" alt="">
-              
-              <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
-                <h3>' . $restaurante['nome'] . '</h3>
-              </a>
-              
-              <p>' . $restaurante['id'] . '</p>     
-            </div>
-            
-              </div>
-            ';
+                <div class="rest" style="">
+                      <img src="' . $restaurante['logo_path'] . '" alt="">
+                      
+                      <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
+                        <h4>' . $restaurante['nome'] . '</h4>
+                      </a>     
+                </div>
+           </div>';
         } ?>
     </div>
-        <h1>Todos os restaurantes:</h1>
+
+    <h2>All our Plates</h2>
     <div class="grid">
         <?php
 
-        $restaurantes = getAllRestaurants();
+        $pratos = getAllFood();
 
-        foreach ($restaurantes as $restaurante) {
+        foreach ($pratos as $comida) {
             echo '
 
             <div class="rest" style="">
-              <img src="' . $restaurante['logo_path'] . '" alt="">
+              <img src="' . $comida['foto_path'] . '" alt="">
               
-              <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
-                <h3>' . $restaurante['nome'] . '</h3>
-                  
+              <a href="plate-detail.php?id=' . $comida['id'] . '">
+                <h4>' . $comida['titulo'] . '</h4>                  
               </a>
               
+              <span>' . getRestaurantById($comida['restaurante_id'])['nome'] . '</span>
             
             </div>';
-
         }
         ?>
     </div>

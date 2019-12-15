@@ -29,19 +29,43 @@ function deleteComida($comidaId) {
     return pg_query(getDBConnection(), "DELETE FROM comida WHERE comida.id = '" . $comidaId . "'");
 }
 
-function searchFood($input) {
-    return pg_fetch_all(pg_query(getDBConnection(), "SELECT id, titulo,preco,restaurante_id FROM comida WHERE titulo  ILIKE '%" . $input . "%' ORDER BY titulo ASC, preco  ASC;"));
+function searchFood($foodName, $column, $order) {
+
+    $query = "SELECT comida.id, comida.titulo, comida.descricao, comida.preco 
+              FROM comida
+              WHERE titulo
+              ILIKE '%" . $foodName . "%'";
+
+    if($column != null && $order != null) {
+        $query = $query . " ORDER BY " . $column .  " " . $order;
+    }
+
+    return pg_fetch_all(pg_query(getDBConnection(), $query));
+}
+
+function searchFoodByRestaurant($restaurantId, $column, $order) {
+
+    $query = "SELECT comida.id, comida.titulo, comida.descricao, comida.preco
+              FROM comida
+              WHERE comida.restaurante_id = '" . $restaurantId . "'";
+
+    if($column != null && $order != null) {
+        $query = $query . " ORDER BY " . $column .  " " . $order;
+    }
+
+    return pg_fetch_all(pg_query(getDBConnection(), $query));
 }
 
 function purchasedDishes($user){
-    return pg_fetch_all(pg_query(getDBConnection(),"SELECT c.titulo,e.data_encomenda 
-                                                         FROM encomenda_comida ec,encomenda e, comida c
+    return pg_fetch_all(pg_query(getDBConnection(),"SELECT c.titulo, e.data_encomenda, e.id
+                                                         FROM encomenda_comida ec, encomenda e, comida c
                                                          WHERE e.cliente_utilizador_username ='" . $user . "'
-                                                         AND ec.encomenda_id=e.id
+                                                         AND ec.encomenda_id = e.id
                                                          AND ec.comida_id = c.id"));
 }
 
-function filter($limit){
-    return pg_fetch_all(pg_query(getDBConnection(), "Select preco from comida  limit '" . $limit . "'"));
-
+function getAllFood() {
+    return pg_fetch_all(pg_query(getDBConnection(),
+        "SELECT comida.id, comida.titulo, comida.preco, comida.restaurante_id, comida.foto_path
+              FROM comida"));
 }

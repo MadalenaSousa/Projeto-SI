@@ -21,75 +21,79 @@ if (isset($_SESSION['username'])) {
 
     <header>
         <?php include 'header.php' ?>
-
     </header>
 
-    <main class="grid">
+    <?php include 'actions/search-filter.php'; ?>
+
+    <main class="grid-welcome">
+
+        <h3>Food:</h3>
+        <div class="grid">
 
         <?php
 
-        include 'actions/search-filter.php';
-
-        if (isset($restaurantes) && !empty($restaurantes)) {
-            foreach ($restaurantes as $restaurante) {
-                echo '
-                    <div class="rest" style="width: 50%;">
-                      <img src="" alt="">
-                      
-                      <a href="profile-restaurant.php?username=' . $restaurante['utilizador_username'] . '">
-                        
-                        <h3>' . $restaurante['nome'] . '</h3>
-                         <h3>' . $restaurante['logo_path'] . '</h3>
-                     
-                      </a>
-                           <a href="plate-detail.php?id=' . $restaurante['utilizador_username'] . '">
-                           <p>' . $restaurante['titulo'] . '</p>  
-                           </a>
-                      <p>' . $restaurante['id'] . '</p>   
-                                    
-                    </div>';
-            }
-        }
-        if (isset($comidas) && !empty($comidas)) {
-            foreach ($comidas as $comida) {
+        if (isset($food) && !empty($food)) {
+            foreach ($food as $comida) {
                 echo '
                     <div class="rest" style="">
                       <img src="" alt="">
-                      
-                      <a href="plate-detail.php?id=' . $comida['id'] . '">
-                      
-                        <h3>' . $comida['titulo'] . '</h3>
-                         <h3>' . $comida['preco'] . '</h3>
-                      
-                      </a>
-                    
+                      <a href="plate-detail.php?id=' . $comida['id'] . '">                      
+                        <span>' . $comida['titulo'] . '</span>
+                        <span>' . $comida['preco'] . '€</span>                      
+                      </a>                    
                     </div>';
-
             }
         }
 
+        ?>
+
+        </div>
+
+        <div class="grid">
+
+        <?php
+
+        if (isset($restaurantes) && !empty($restaurantes)) {
+            foreach ($restaurantes as $rest) {
+                $foodByRestaurant = searchFoodByRestaurant($rest['id'], $coluna, $ordem);
+
+                echo '<span>Food from: ' . $rest['nome'] . '</span>';
+
+                foreach ($foodByRestaurant as $comida) {
+                    echo '<div class="rest" style="">
+                      <img src="" alt="">
+                      <a href="plate-detail.php?id=' . $comida['id'] . '">                      
+                        <span>' . $comida['titulo'] . '</span>
+                        <span>' . $comida['preco'] . '€</span>                      
+                      </a>                    
+                    </div>';
+                }
+            }
+        }
 
         ?>
 
-        <?php
-        if (isset($_POST['button'])) {
+        </div>
 
-            $filtro = filter(['limit']);
-        } ?>
-        <form method="post">
-            <label>Preço: <input type="number" name="preco" value="<?php echo $filtro['preco'] ?>"></label><br>
-            <input type="submit" class="button" value="Aplicar filtro">
+        <form method="get" action="search-results.php">
+            <input name="search"  type="hidden" value="<?php echo $_GET['search'] ?>">
+            <label>Data:
+                <select name="column">
+                    <option value="preco">Price</option>
+                    <option value="titulo">Plate Name (A-Z)</option>
+                    <option value="restaurant">Restaurant Name (A-Z)</option>
+                </select>
+            </label>
+            <label>Order:
+                <select name="order">
+                    <option value="ASC">Ascendent</option>
+                    <option value="DESC">Descendet</option>
+                </select>
+            </label>
+            <input type="submit" class="button">
         </form>
-        <?php
-        ?>
-
-
     </main>
 </div>
-<footer>
-
-
-</footer>
 <script src="javascript/geral.js"></script>
 </body>
 </html>

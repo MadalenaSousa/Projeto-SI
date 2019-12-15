@@ -25,3 +25,10 @@ function createOrder_Food($encomendaId, $comidaId, $quantidade) {
     return pg_query(getDBConnection(), "INSERT INTO encomenda_comida(encomenda_id, comida_id, quantidade)
                                               VALUES ('" . $encomendaId . "', '" . $comidaId . "', '" . $quantidade . "')");
 }
+
+function getOrdersByClient($username) {
+    return pg_fetch_all(pg_query(getDBConnection(),
+                                    "SELECT encomenda.id, encomenda.data_encomenda
+                                          FROM encomenda
+                                          WHERE encomenda.cliente_utilizador_username = '" . $username . "'"));
+}
