@@ -26,7 +26,7 @@ function getOrderById($id) {
 }
 
 function getOrderFoodByOrderId($id) {
-    return pg_fetch_all(pg_query(getDBConnection(),
+    return pg_fetch_allOrArray(pg_query(getDBConnection(),
         "SELECT  comida.titulo, comida.preco, comida.restaurante_id, encomenda_comida.quantidade
               FROM encomenda, encomenda_comida, comida 
               WHERE encomenda.id = encomenda_comida.encomenda_id
@@ -35,7 +35,7 @@ function getOrderFoodByOrderId($id) {
 }
 
 function getOrdersByClient($username) {
-    return pg_fetch_all(pg_query(getDBConnection(),
+    return pg_fetch_allOrArray(pg_query(getDBConnection(),
                                     "SELECT encomenda.id, encomenda.data_encomenda
                                           FROM encomenda
                                           WHERE encomenda.cliente_utilizador_username = '" . $username . "'"));

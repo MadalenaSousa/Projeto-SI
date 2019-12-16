@@ -10,3 +10,13 @@ function getDBConnection() {
 
     return $connection;
 }
+
+function pg_fetch_allOrArray($query) {
+    $result = pg_fetch_all($query);
+
+    if($result == FALSE) {
+        return array();
+    } else {
+        return $result;
+    }
+}

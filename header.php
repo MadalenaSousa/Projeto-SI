@@ -38,10 +38,6 @@
         ?>
 
         <div>
-            <img src="images/notification.svg" alt="">
-        </div>
-
-        <div>
             <div class="burger">
                 <img src="images/burguer.svg" alt="">
             </div>
@@ -63,13 +59,13 @@
                     <div>My Profile</div>
                 </a>
 
+                <?php if($_SESSION['tipo'] == 2) { ?>
+
                 <a href="cart.php">
                     <div>My Cart</div>
                 </a>
 
-                <a href="settings.php">
-                    <div>Settings</div>
-                </a>
+                <?php } ?>
 
                 <div>
                     <form action="actions/logout.php" method="post">

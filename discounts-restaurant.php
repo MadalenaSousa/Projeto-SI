@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+include 'actions/is-logged.php';
+include 'actions/is-restaurant.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +26,7 @@
 include 'database-data-functions/desconto-data.php';
 include 'database-data-functions/restaurante-data.php';
 
-$restaurante = getRestaurantByUsername($_GET['username']);
+$restaurante = getRestaurantByUsername($_SESSION['username']);
 $descontosRestaurante = getDiscountByRestaurant($restaurante['id']);
 
 ?>
@@ -38,6 +45,11 @@ $descontosRestaurante = getDiscountByRestaurant($restaurante['id']);
     }
 
     ?>
+
+    <div style="color: red"><?php if(isset($_GET['error'])) {
+            echo 'You have not sold any Food, so you can\'t create discounts';
+        } ?>
+    </div>
 
     <form method="post" action="actions/create-discount.php">
         <label>Value of discount (percentage): <input type="number" name="valor"></label><br>

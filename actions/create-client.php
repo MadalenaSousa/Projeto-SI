@@ -13,13 +13,12 @@ if(isset($_SESSION['username'])) {
     $username = $_POST['username'];
     $password = $_POST['confirmpassword'];
     $email = $_POST['email'];
-    $saldo = $_POST['saldo'];
 
     if(userExists($username, $email) == True) {
-        header('Location: ../signup.php');
+        header('Location: ../signup.php?error=true');
     } else {
         createUser($nome, $username, $password, $email, 2) or die;
-        createClient($username, $saldo) or die;
+        createClient($username, 100) or die;
 
         session_start();
 

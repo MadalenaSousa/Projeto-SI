@@ -16,10 +16,14 @@
     <div class="grid">
         <div></div>
         <div class="grid-welcome">
-            <div class="col-12">
+            <div>
                 <h1>Welcome Back!</h1>
             </div>
-            <div class="col-12">
+            <div style="color: red"><?php if(isset($_GET['error'])) {
+                    echo 'Wrong username or password!';
+                } ?>
+            </div>
+            <div>
                 <form method="post" action="actions/startsession.php">
                     <label><input placeholder="Username" type="text" name="username" required></label><br>
                     <label><input placeholder="Password" type="text" name="password" required></label><br>
