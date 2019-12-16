@@ -47,6 +47,10 @@
         <div>
             Menu
         </div>
+        <div style="color: red"><?php if(isset($_GET['error'])) {
+                echo 'Can\'t delete plate because it as already been bought';
+            } ?>
+        </div>
         <div class="grid">
             <?php
             if(!empty(getFoodFromRestaurant($_GET['username']))) {

@@ -10,5 +10,5 @@ if($wasBought['comprado'] == false) {
     deleteComida($comidaId);
     header('Location: ../profile-restaurant.php?username=' . $_GET['username']);
 } else {
-    echo "Can't delete this item because it as already been bought!";
+    header('Location: ../profile-restaurant.php?username=' . $_GET['username'] . '&error=true');
 }

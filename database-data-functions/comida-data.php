@@ -49,7 +49,7 @@ function markFoodAsBought($comidaId) {
 
 function searchFoodByRestaurant($restaurantId, $column, $order) {
 
-    $query = "SELECT comida.id, comida.titulo, comida.descricao, comida.preco
+    $query = "SELECT comida.id, comida.titulo, comida.descricao, comida.preco, comida.restaurante_id
               FROM comida
               WHERE comida.restaurante_id = '" . $restaurantId . "'";
 

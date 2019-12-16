@@ -33,7 +33,7 @@ if (isset($_SESSION['username'])) {
                     <select name="column">
                         <option value="preco">Price</option>
                         <option value="titulo">Plate Name (A-Z)</option>
-                        <option value="restaurant">Restaurant Name (A-Z)</option>
+                        <option value="restaurante_id">Restaurant Name (A-Z)</option>
                     </select>
                 </label>
                 <label>Order:
