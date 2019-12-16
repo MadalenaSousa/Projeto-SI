@@ -25,8 +25,28 @@ if (isset($_SESSION['username'])) {
 
     <?php include 'actions/search-filter.php'; ?>
 
-    <main class="grid-welcome">
+    <main>
+        <div class="grid-welcome">
+            <form method="get" action="search-results.php">
+                <input name="search"  type="hidden" value="<?php echo $_GET['search'] ?>">
+                <label>Data:
+                    <select name="column">
+                        <option value="preco">Price</option>
+                        <option value="titulo">Plate Name (A-Z)</option>
+                        <option value="restaurant">Restaurant Name (A-Z)</option>
+                    </select>
+                </label>
+                <label>Order:
+                    <select name="order">
+                        <option value="ASC">Ascendent</option>
+                        <option value="DESC">Descendet</option>
+                    </select>
+                </label>
+                <input type="submit" class="button">
+            </form>
+        </div>
 
+        <div class="grid-welcome">
         <h3>Food:</h3>
         <div class="grid">
 
@@ -35,7 +55,7 @@ if (isset($_SESSION['username'])) {
         if (isset($food) && !empty($food)) {
             foreach ($food as $comida) {
                 echo '
-                    <div class="rest" style="">
+                    <div style="">
                       <img src="" alt="">
                       <a href="plate-detail.php?id=' . $comida['id'] . '">                      
                         <span>' . $comida['titulo'] . '</span>
@@ -48,8 +68,9 @@ if (isset($_SESSION['username'])) {
         ?>
 
         </div>
+        </div>
 
-        <div class="grid">
+        <div class="grid-welcome">
 
         <?php
 
@@ -57,15 +78,17 @@ if (isset($_SESSION['username'])) {
             foreach ($restaurantes as $rest) {
                 $foodByRestaurant = searchFoodByRestaurant($rest['id'], $coluna, $ordem);
 
-                echo '<span>Food from: ' . $rest['nome'] . '</span>';
+                echo '<h3>Food from: ' . $rest['nome'] . '</h3>';
 
                 foreach ($foodByRestaurant as $comida) {
-                    echo '<div class="rest" style="">
-                      <img src="" alt="">
-                      <a href="plate-detail.php?id=' . $comida['id'] . '">                      
-                        <span>' . $comida['titulo'] . '</span>
-                        <span>' . $comida['preco'] . '€</span>                      
-                      </a>                    
+                    echo '<div class="grid" style="">
+                      <div>  
+                          <img src="" alt="">
+                          <a href="plate-detail.php?id=' . $comida['id'] . '">                      
+                            <span>' . $comida['titulo'] . '</span>
+                            <span>' . $comida['preco'] . '€</span>                      
+                          </a>
+                      </div>                    
                     </div>';
                 }
             }
@@ -74,24 +97,6 @@ if (isset($_SESSION['username'])) {
         ?>
 
         </div>
-
-        <form method="get" action="search-results.php">
-            <input name="search"  type="hidden" value="<?php echo $_GET['search'] ?>">
-            <label>Data:
-                <select name="column">
-                    <option value="preco">Price</option>
-                    <option value="titulo">Plate Name (A-Z)</option>
-                    <option value="restaurant">Restaurant Name (A-Z)</option>
-                </select>
-            </label>
-            <label>Order:
-                <select name="order">
-                    <option value="ASC">Ascendent</option>
-                    <option value="DESC">Descendet</option>
-                </select>
-            </label>
-            <input type="submit" class="button">
-        </form>
     </main>
 </div>
 <script src="javascript/geral.js"></script>
