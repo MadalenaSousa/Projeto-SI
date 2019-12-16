@@ -3,8 +3,16 @@
 include_once(dirname(__FILE__) . '/connection.php');
 
 function createRestaurant($username, $nome) {
-    return pg_query(getDBConnection(), "INSERT INTO restaurante (nome, utilizador_username) 
+    $query = pg_query(getDBConnection(), "INSERT INTO restaurante (nome, utilizador_username) 
                                              VALUES ('" . $nome . "', '" . $username . "');");
+
+    if(pg_affected_rows($query) == 1) {
+        $restauranteId = pg_fetch_all(pg_query(getDBConnection(), "SELECT MAX(id) FROM desconto"))[0]['max'];
+    } else {
+        $restauranteId = -1;
+    }
+
+    return $restauranteId;
 }
 
 function getRestaurantByUsername($username) {

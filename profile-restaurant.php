@@ -37,9 +37,12 @@
             <div>
                 <h1><?php echo $user['nome'] ?></h1>
             </div>
+
+            <?php if($_SESSION['username'] == $_GET['username']) { ?>
             <div>
-                <a href="discounts-restaurant.php?username=<?php echo $_GET['username'] ?>">Discounts</a>
+                <a href="discounts-restaurant.php?username=<?php echo $_SESSION['username'] ?>">Discounts</a>
             </div>
+            <?php } ?>
         </div>
         <div>
             Menu
