@@ -48,6 +48,9 @@ include 'database-data-functions/encomenda-data.php';
                 echo '<span>
                             Plate: ' . $item['titulo'] . '
                       </span>';
+                  echo '<span>
+                            Quantity: ' . $item['quantidade'] . '
+                      </span>';
             };
     }
 

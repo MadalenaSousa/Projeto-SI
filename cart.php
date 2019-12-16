@@ -55,6 +55,11 @@ include 'actions/is-client.php';
     }
     ?>
 
+    <div style="color: red"><?php if(isset($_GET['error'])) {
+            echo 'You don\'t have enough available budget to make this order!';
+        } ?>
+    </div>
+
     <div class="grid">
         <form method="post" action="actions/clear-cart.php">
             <input class="button" type="submit" value="Clear Cart">

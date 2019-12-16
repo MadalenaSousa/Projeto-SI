@@ -31,20 +31,26 @@ foreach ($_SESSION['pratos'] as $comida) {
     $totalDesconto += ($comida['price'] - $descontoCliente) * $comida['quantity']; //soma o preco total dos pratos * a sua quantidade e retira o desconto
 }
 
-$newBudget = $dadosCliente['saldo'] - $totalDesconto;
-updateBudget($username, $newBudget);
+if($dadosCliente['saldo'] >= $totalDesconto) {
+    $encomendaId = createOrder($data, $local, 1, $username, $total, $totalDesconto);
 
-$encomendaId = createOrder($data, $local, 1, $username, $total, $totalDesconto);
+    foreach ($_SESSION['pratos'] as $comida) {
+        createOrder_Food($encomendaId, $comida['id'], $comida['quantity']);
+        markFoodAsBought($comida['id']);
+    }
 
-foreach ($_SESSION['pratos'] as $comida) {
-    createOrder_Food($encomendaId, $comida['id'], $comida['quantity']);
-    markFoodAsBought($comida['id']);
+    $newBudget = $dadosCliente['saldo'] - $totalDesconto;
+    updateBudget($username, $newBudget);
+
+    foreach ($descontosUsados as $id) {
+        setDiscountAsUsed($username, $id);
+    }
+
+    unset($_SESSION['pratos']);
+
+    header('Location: ../order-result.php?id=' . $encomendaId);
+
+} else {
+
+    header('Location: ../cart.php?error=true');
 }
-
-foreach ($descontosUsados as $id) {
-    setDiscountAsUsed($username, $id);
-}
-
-unset($_SESSION['pratos']);
-
-header('Location: ../order-result.php?id=' . $encomendaId);
