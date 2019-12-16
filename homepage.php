@@ -25,7 +25,7 @@
 
     ?>
 
-    <h2>New Restaurants:</h2>
+    <h2>New Restaurants</h2>
     <div class="grid">
 
         <?php

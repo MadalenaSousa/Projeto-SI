@@ -27,9 +27,9 @@
 
         $restaurante = getRestaurantById($comida['restaurante_id']);
 
-        echo '<h4 class="modal-title">' . $comida['titulo'] . '</h4>
+        echo '<h2 class="modal-title">' . $comida['titulo'] . '</h2>
               <span>Description: ' . $comida['descricao'] . '</span> 
-              <span>Price: ' . $comida['preco'] . '</span> 
+              <span>Price: ' . $comida['preco'] . '€</span> 
               <span>Restaurant: ' . $restaurante['nome'] . '</span>';
 
     }
