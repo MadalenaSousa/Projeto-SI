@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+include 'actions/is-logged.php';
+include 'actions/is-client.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +46,7 @@
                     <div>' . $comida['title'] . '</div>
                     <div>' . $comida['quantity'] . '</div>
                     <div>' . $comida['price'] . '</div>
-                    <form method="post" action="">
+                    <form method="post" action="actions/remove-cart-item.php">
                         <input type="hidden" value="' . $comida['id'] . '" name="id">
                         <input type="submit" value="X">
                     </form>

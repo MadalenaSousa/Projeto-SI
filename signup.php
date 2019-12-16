@@ -18,6 +18,10 @@
     <main class="grid">
         <div></div>
         <div class="grid-welcome">
+            <div style="color: red"><?php if(isset($_GET['error'])) {
+                echo 'Username or email already exists!';
+            } ?>
+            </div>
             <div>
                 <h1>Create an Account as a Client!</h1>
                 <form method="post" action="actions/create-client.php">
@@ -30,8 +34,6 @@
                     <label><input placeholder="Password" type="text" name="password" required></label><br>
                     <br>
                     <label><input placeholder="Confirm Password" type="text" name="confirmpassword" required></label><br>
-                    <br>
-                    <label><input placeholder="Saldo" type="text" name="saldo" required></label><br>
                     <br>
                     <input type="submit" class="button" value="Registar">
                 </form>

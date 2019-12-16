@@ -36,36 +36,14 @@
         <div>
             <h1><?php echo $user['nome'] ?></h1>
         </div>
+
+        <?php if($_SESSION['username'] == $_GET['username']) { ?>
         <div>
-            <a href="discounts-client.php?username=<?php echo $_GET['username'] ?>">Discounts</a>
-            <a href="orders.php?username=<?php echo $_GET['username'] ?>">My Orders</a>
-            <a href="wallet.php?username=<?php echo $_GET['username'] ?>">Wallet</a>
+            <a href="discounts-client.php">Discounts</a>
+            <a href="orders.php">My Orders</a>
+            <a href="wallet.php">Wallet</a>
         </div>
-    </div>
-    <div>
-        Recently Viewed
-    </div>
-    <div class="grid">
-        <div>
-            <img src="#" alt="">
-            <h3>Nome</h3>
-            <p>Localização</p>
-        </div>
-        <div>
-            <img src="#" alt="">
-            <h3>Nome</h3>
-            <p>Localização</p>
-        </div>
-        <div>
-            <img src="#" alt="">
-            <h3>Nome</h3>
-            <p>Localização</p>
-        </div>
-        <div>
-            <img src="#" alt="">
-            <h3>Nome</h3>
-            <p>Localização</p>
-        </div>
+        <?php } ?>
     </div>
 </main>
 

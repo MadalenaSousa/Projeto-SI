@@ -39,7 +39,6 @@
             </div>
             <div>
                 <a href="discounts-restaurant.php?username=<?php echo $_GET['username'] ?>">Discounts</a>
-                <a href="#">Edit Profile</a>
             </div>
         </div>
         <div>

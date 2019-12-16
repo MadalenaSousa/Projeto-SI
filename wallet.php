@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+include 'actions/is-logged.php';
+include 'actions/is-client.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,15 +25,14 @@
         include 'database-data-functions/utilizador-data.php';
         include 'database-data-functions/cliente-data.php';
 
-        $user = getUserByUsername($_GET['username']);
-        $cliente = getClientByUsername($_GET['username']);
+        $user = getUserByUsername($_SESSION['username']);
+        $cliente = getClientByUsername($_SESSION['username']);
     ?>
 
     <main class="grid-welcome">
         <h1>My Budget</h1>
-        <p><?php echo "My Full Budged: " . $cliente['saldo'] ?></p>
-        <p><?php echo "How much I've Spent: "?></p>
-        <p><?php echo "My Available Budged: "?></p>
+        <p><?php echo "My Initial Budget: 100€"?></p>
+        <p><?php echo "My Available Budget: "  . $cliente['saldo'] ?>€</p>
     </main>
 
 <script src="javascript/geral.js"></script>

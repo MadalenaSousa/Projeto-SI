@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+include 'actions/is-logged.php';
+include 'actions/is-client.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

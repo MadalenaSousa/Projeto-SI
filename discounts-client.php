@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+include 'actions/is-logged.php';
+include 'actions/is-client.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +26,7 @@
 include 'database-data-functions/desconto-data.php';
 include 'database-data-functions/restaurante-data.php';
 
-$desconto = getDiscountByClient($_GET['username'])
+$desconto = getDiscountByClient($_SESSION['username']);
 
 ?>
 
@@ -27,12 +34,13 @@ $desconto = getDiscountByClient($_GET['username'])
 
     <?php
 
-    foreach ($desconto as $desc)
+    foreach ($desconto as $desc) {
 
         echo '<span>Value: ' . $desc['valor_desconto'] . '%</span>';
         echo '<span>Expiration Date: ' . $desc['validade'] . '</span>';
         echo '<span>Used: ' . $desc['usado'] . '</span>';
         echo '<span>Restaurant: ' . getRestaurantById($desc['restaurante_id'])['nome'] . '</span>';
+    }
 
     ?>
 

@@ -58,11 +58,13 @@
             <div class="rest" style="">
               <img src="' . $comida['foto_path'] . '" alt="">
               
-              <a href="plate-detail.php?id=' . $comida['id'] . '">
-                <h4>' . $comida['titulo'] . '</h4>                  
-              </a>
+              <h4>' . $comida['titulo'] . '</h4>                  
               
               <span>' . getRestaurantById($comida['restaurante_id'])['nome'] . '</span>
+              
+              <a href="plate-detail.php?id=' . $comida['id'] . '">
+                <div class="button">DETAILS</div>                  
+              </a>
             
             </div>';
         }

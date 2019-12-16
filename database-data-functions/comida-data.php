@@ -14,7 +14,7 @@ function updateComida($id, $titulo, $description, $price) {
 }
 
 function getFoodFromRestaurant($restaurantUsername) {
-    return pg_fetch_all(pg_query(getDBConnection(),
+    return pg_fetch_allOrArray(pg_query(getDBConnection(),
         "SELECT comida.id, comida.titulo, comida.descricao, comida.preco, comida.restaurante_id
               FROM comida, restaurante
               WHERE restaurante.utilizador_username = '" . $restaurantUsername . "'
@@ -40,7 +40,7 @@ function searchFood($foodName, $column, $order) {
         $query = $query . " ORDER BY " . $column .  " " . $order;
     }
 
-    return pg_fetch_all(pg_query(getDBConnection(), $query));
+    return pg_fetch_allOrArray(pg_query(getDBConnection(), $query));
 }
 
 function markFoodAsBought($comidaId) {
@@ -57,11 +57,11 @@ function searchFoodByRestaurant($restaurantId, $column, $order) {
         $query = $query . " ORDER BY " . $column .  " " . $order;
     }
 
-    return pg_fetch_all(pg_query(getDBConnection(), $query));
+    return pg_fetch_allOrArray(pg_query(getDBConnection(), $query));
 }
 
 function purchasedDishes($user){
-    return pg_fetch_all(pg_query(getDBConnection(),"SELECT c.titulo, e.data_encomenda, e.id
+    return pg_fetch_allOrArray(pg_query(getDBConnection(),"SELECT c.titulo, e.data_encomenda, e.id
                                                          FROM encomenda_comida ec, encomenda e, comida c
                                                          WHERE e.cliente_utilizador_username ='" . $user . "'
                                                          AND ec.encomenda_id = e.id
@@ -69,7 +69,7 @@ function purchasedDishes($user){
 }
 
 function getAllFood() {
-    return pg_fetch_all(pg_query(getDBConnection(),
+    return pg_fetch_allOrArray(pg_query(getDBConnection(),
         "SELECT comida.id, comida.titulo, comida.preco, comida.restaurante_id, comida.foto_path
               FROM comida"));
 }

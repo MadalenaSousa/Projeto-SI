@@ -12,24 +12,19 @@ function getUserByUsername($username) {
 }
 
 function userExists($username, $email){
-    $dadosexistentes = pg_query(getDBConnection(), "SELECT username, email FROM utilizador");
+    $dadosexistentes = pg_query(getDBConnection(),
+        "SELECT username, email 
+              FROM utilizador 
+              WHERE username LIKE '" . $username . "' 
+              OR email LIKE '" . $email . "'");
+
     $dadosexistentes = pg_fetch_all($dadosexistentes);
 
-    $existe = false;
-
-    if(empty($dadosexistentes)) {
-        $existe = false;
+    if($dadosexistentes == FALSE) {
+        return false;
     } else {
-        foreach ($dadosexistentes as $value) {
-            if ($value['username'] == $username || $value['email'] == $email) {
-                $existe = true;
-            } else {
-                $existe = false;
-            }
-        }
+        return true;
     }
-
-    return $existe;
 }
 
 function correctData($username, $password) {

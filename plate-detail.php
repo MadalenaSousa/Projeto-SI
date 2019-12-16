@@ -34,6 +34,8 @@
 
     }
     ?>
+
+    <?php if($_SESSION['tipo'] == 2) { ?>
     <form method="post" action="actions/add-cart.php">
         <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
         <input type="hidden" name="compra-imediata" value="0">
@@ -45,9 +47,10 @@
         <input type="hidden" name="compra-imediata" value="1">
         <input type="submit" class="button" value="Instant Buy">
     </form>
+    <?php } ?>
 
     <?php
-    if ($_SESSION['tipo'] == 1 ) {
+    if ($_SESSION['tipo'] == 1 && $_SESSION['restauranteId'] == $comida['restaurante_id']) {
         echo '
         <form method="get" action="edit-plate.php">
             <input type="submit" class="button" value="Edit Plate">

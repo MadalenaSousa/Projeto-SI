@@ -28,7 +28,7 @@ if (correctData($username, $password)) {
     header('Location: ../homepage.php');
 
 } else {
-    echo "Não há nenhum utilizador registado com esses dados!";
+    header('Location: ../login.php?error=true');
 }
 
 ?>

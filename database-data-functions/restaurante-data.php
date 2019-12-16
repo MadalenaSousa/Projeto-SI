@@ -12,11 +12,11 @@ function getRestaurantByUsername($username) {
 }
 
 function getLastRestaurants($limit){
-    return pg_fetch_all(pg_query( getDBConnection(),"SELECT id, nome, logo_path, utilizador_username FROM restaurante ORDER BY id DESC LIMIT '" . $limit . "'"));
+    return pg_fetch_allOrArray(pg_query( getDBConnection(),"SELECT id, nome, logo_path, utilizador_username FROM restaurante ORDER BY id DESC LIMIT '" . $limit . "'"));
 }
 
 function searchRestaurant($input) {
-    return pg_fetch_all(pg_query(getDBConnection(),
+    return pg_fetch_allOrArray(pg_query(getDBConnection(),
         "SELECT restaurante.id, restaurante.nome, restaurante.utilizador_username, restaurante.logo_path
               FROM restaurante
               WHERE nome ILIKE '%" . $input . "%'"));
@@ -26,7 +26,7 @@ function getRestaurantById($id){
 }
 
 function getClientsAndSpendingsByRestaurant($restauranteId) {
-    return pg_fetch_all(pg_query(getDBConnection(), "SELECT cliente, SUM(total) AS soma FROM 
+    return pg_fetch_allOrArray(pg_query(getDBConnection(), "SELECT cliente, SUM(total) AS soma FROM 
                                                           (SELECT comida.preco * encomenda_comida.quantidade AS total, encomenda.cliente_utilizador_username AS cliente 
                                                           FROM comida, encomenda_comida, encomenda
                                                           WHERE encomenda.id = encomenda_comida.encomenda_id
